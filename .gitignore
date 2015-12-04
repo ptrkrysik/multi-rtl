@@ -1,0 +1,7 @@
+build
+*.o
+*.log
+*~
+*.pyc
+*.pyo
+.unittests
