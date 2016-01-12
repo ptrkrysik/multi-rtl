@@ -34,15 +34,15 @@ from math import log,ceil
     
   
 if __name__ == "__main__":
-    samp_rate = 1625000/6*4
-    N = int(2*samp_rate)
+    sample_rate = 1625000/6*4
+    N = int(8*sample_rate)
     blocks_head_0 = blocks.head(gr.sizeof_gr_complex*1, N)
     blocks_head_1 = blocks.head(gr.sizeof_gr_complex*1, N)
     file_sink_0 = blocks.file_sink(gr.sizeof_gr_complex*1, "temp1", False)
     file_sink_0.set_unbuffered(True)
     file_sink_1 = blocks.file_sink(gr.sizeof_gr_complex*1, "temp2", False)
     file_sink_1.set_unbuffered(True)
-    multi_rtl_source_0 = multi_rtl.multi_rtl_source(samp_rate=samp_rate, ppm=-7, sync_fc=100e6)
+    multi_rtl_source_0 = multi_rtl.multi_rtl_source(sample_rate=sample_rate, ppm=-7, sync_center_freq=107e6, center_freqs=[939.6e6, 939.6e6], sync_gains=[30, 30], gains=[20, 20])
 #    nsink = blocks.null_sink(gr.sizeof_gr_complex*1)
 #    nsink2 = blocks.null_sink(gr.sizeof_gr_complex*1)
 
@@ -52,4 +52,6 @@ if __name__ == "__main__":
     tb.connect((blocks_head_0,0),(file_sink_0,0))
     tb.connect((blocks_head_1,0),(file_sink_1,0))
     tb.start()
+    time.sleep(4)
+    multi_rtl_source_0.synchronize()
     tb.wait()

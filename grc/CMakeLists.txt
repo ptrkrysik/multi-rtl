@@ -16,7 +16,22 @@
 # along with GNU Radio; see the file COPYING.  If not, write to
 # the Free Software Foundation, Inc., 51 Franklin Street,
 # Boston, MA 02110-1301, USA.
+
+macro(GEN_BLOCK_XML _generator _xml_block)
+    set(generator ${CMAKE_CURRENT_SOURCE_DIR}/${_generator})
+    set(xml_block ${CMAKE_CURRENT_BINARY_DIR}/${_xml_block})
+    list(APPEND xml_blocks ${xml_block})
+    add_custom_command(
+        DEPENDS ${generator} OUTPUT ${xml_block}
+        COMMAND ${PYTHON_EXECUTABLE} ${generator} ${xml_block}
+    )
+endmacro(GEN_BLOCK_XML)
+
+GEN_BLOCK_XML(gen_multi_rtl_block.py multi_rtl_source.xml)
+
+add_custom_target(multi_rtl_grc_xml_blocks ALL DEPENDS ${xml_blocks})
+
 install(FILES
-    multi_rtl_vector_sink_cn.xml
-    multi_rtl_multi_rtl_source.xml DESTINATION share/gnuradio/grc/blocks
+    ${xml_blocks}
+    multi_rtl_vector_sink_cn.xml DESTINATION share/gnuradio/grc/blocks
 )
