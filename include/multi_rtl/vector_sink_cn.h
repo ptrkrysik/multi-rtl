@@ -39,10 +39,10 @@ namespace gr {
       // gr::blocks::vector_sink_cn::sptr
       typedef boost::shared_ptr<vector_sink_cn> sptr;
 
-      static sptr make(int vlen = 1, bool finite=false, int nsamp=0, feval * fullness_norifier=NULL);
+      static sptr make(int vlen = 1, bool finite=false, int nsamp=0, int num_channels=1, feval * fullness_norifier=NULL);
 
       virtual void reset() = 0;
-      virtual std::vector<gr_complex> data() const = 0;
+      virtual std::vector< std::vector<gr_complex> > data() const = 0;
       virtual std::vector<tag_t> tags() const = 0;
     };
 

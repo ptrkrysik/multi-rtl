@@ -34,20 +34,21 @@ namespace gr {
     class vector_sink_cn_impl : public vector_sink_cn
     {
     private:
-      std::vector<gr_complex> d_data;
+      std::vector< std::vector<gr_complex> > d_data;
       std::vector<tag_t> d_tags;
       int d_vlen;
       int d_finite;
       int d_nsamp;
-      int d_samp_couter;
+      int d_num_channels;
+      int d_samp_counter;
       feval * d_fullness_norifier;
 
     public:
-      vector_sink_cn_impl(int vlen, bool finite, int nsamp, feval * fullness_norifier);
+      vector_sink_cn_impl(int vlen, bool finite, int nsamp, int num_channels, feval * fullness_norifier);
       ~vector_sink_cn_impl();
 
-      void reset() { d_data.clear(); d_samp_couter=0; }
-      std::vector<gr_complex> data() const;
+      void reset();
+      std::vector< std::vector<gr_complex> > data() const;
       std::vector<tag_t> tags() const;
 
       int work(int noutput_items,

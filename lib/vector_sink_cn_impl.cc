@@ -35,24 +35,38 @@ namespace gr {
   namespace multi_rtl {
 
     vector_sink_cn::sptr
-    vector_sink_cn::make(int vlen, bool finite, int nsamp, feval * fullness_norifier)
+    vector_sink_cn::make(int vlen, bool finite, int nsamp, int num_channels, feval * fullness_norifier)
     {
       return gnuradio::get_initial_sptr
-        (new vector_sink_cn_impl(vlen, finite, nsamp, fullness_norifier));
+        (new vector_sink_cn_impl(vlen, finite, nsamp, num_channels, fullness_norifier));
     }
 
-    vector_sink_cn_impl::vector_sink_cn_impl(int vlen, bool finite, int nsamp, feval * fullness_norifier)
+    vector_sink_cn_impl::vector_sink_cn_impl(int vlen, bool finite, int nsamp, int num_channels, feval * fullness_norifier)
     : sync_block("vector_sink_c",
-                    io_signature::make(1, 1, sizeof(gr_complex) * vlen),
+                    io_signature::make(num_channels, num_channels, sizeof(gr_complex) * vlen),
                     io_signature::make(0, 0, 0)),
-    d_vlen(vlen), d_finite(finite), d_nsamp(nsamp), d_samp_couter(0), d_fullness_norifier(fullness_norifier)
+    d_vlen(vlen), d_finite(finite), d_nsamp(nsamp), d_samp_counter(0), d_fullness_norifier(fullness_norifier), d_num_channels(num_channels)
     {
+        int ch;
+        d_data.resize(d_num_channels);
+        for(ch=0; ch<d_num_channels; ch++){
+            d_data[ch].resize(d_nsamp);
+//            d_data.push_back(boost::shared_ptr<std::vector<gr_complex> >(new std::vector<gr_complex>(nsamp)));
+        }
+    }
+
+    void vector_sink_cn_impl::reset(){
+        int ch;
+        d_samp_counter = 0;
+        for(ch=0; ch<d_num_channels; ch++){
+            d_data[ch].clear();
+        }
     }
 
     vector_sink_cn_impl::~vector_sink_cn_impl()
     {}
 
-    std::vector<gr_complex>
+    std::vector< std::vector<gr_complex> >
     vector_sink_cn_impl::data() const
     {
       return d_data;
@@ -69,24 +83,48 @@ namespace gr {
                       gr_vector_const_void_star &input_items,
                       gr_vector_void_star &output_items)
     {
-      gr_complex *iptr = (gr_complex*)input_items[0];
+//      gr_complex *iptr = (gr_complex*)input_items[0];
+        
+      int ch;
 
-      if((!d_finite) || (d_samp_couter < d_nsamp)){
-          for(int i = 0; (i < noutput_items * d_vlen); i++){
-            d_data.push_back (iptr[i]);
-            d_samp_couter++;
-            if(d_finite && (d_samp_couter>=d_nsamp)){
-                if(d_fullness_norifier!=NULL){
-                    d_fullness_norifier->calleval();
-                }
-                break;
+      if(d_finite && (d_samp_counter < d_nsamp)){
+        bool full=false;
+        int samples_to_copy=0;
+        if((noutput_items+d_samp_counter) >= d_nsamp){
+          int samples_to_copy = d_nsamp-d_samp_counter;
+          d_samp_counter=d_samp_counter+samples_to_copy;
+          full = true;
+        } else {
+          samples_to_copy = noutput_items;
+          d_samp_counter = d_samp_counter+noutput_items;
+        }
+              
+        for(ch=0; ch<d_num_channels; ch++){
+            for(int i = 0; (i < samples_to_copy * d_vlen); i++){
+              d_data[ch].push_back (((gr_complex*)input_items[ch])[i]);
+            }              
+            
+              std::vector<tag_t> tags;
+              get_tags_in_range(tags, ch, nitems_read(ch), nitems_read(ch) + noutput_items);
+              d_tags.insert(d_tags.end(), tags.begin(), tags.end());
+        }
+        if(full){
+            if(d_fullness_norifier!=NULL){
+                d_fullness_norifier->calleval();
             }
-          }
-          
-          std::vector<tag_t> tags;
-          get_tags_in_range(tags, 0, nitems_read(0), nitems_read(0) + noutput_items);
-          d_tags.insert(d_tags.end(), tags.begin(), tags.end());
+        }
+      } else {
+        for(ch=0; ch<d_num_channels; ch++){
+            for(int i = 0; (i < noutput_items * d_vlen); i++){
+              d_data[ch].push_back (((gr_complex*)input_items[ch])[i]);
+            }              
+            
+                std::vector<tag_t> tags;
+                get_tags_in_range(tags, ch, nitems_read(ch), nitems_read(ch) + noutput_items);
+                d_tags.insert(d_tags.end(), tags.begin(), tags.end());
+        }
       }
+      
       return noutput_items;
     }
 
