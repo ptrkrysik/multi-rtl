@@ -2,7 +2,7 @@
 ##################################################
 # GNU Radio Python Flow Graph
 # Title: Test Sync
-# Generated: Tue Jan 12 07:35:49 2016
+# Generated: Wed Jan 13 22:44:34 2016
 ##################################################
 
 from gnuradio import blocks
@@ -22,21 +22,55 @@ class test_sync(gr.top_block):
         ##################################################
         # Variables
         ##################################################
-        self.samp_rate = samp_rate = 2e6
+        self.samp_rate = samp_rate = 1625000/6.0*4
 
         ##################################################
         # Blocks
         ##################################################
-        self.multi_rtl_source_0 = multi_rtl.multi_rtl_source(sample_rate=samp_rate, num_channels=2, ppm=-7, sync_center_freq=100e6)
-        self.multi_rtl_source_0.set_sync_gain(40, 0)
-        self.multi_rtl_source_0.set_gain(25, 0)
-        self.multi_rtl_source_0.set_center_freq(939.4e6, 0)
-        self.multi_rtl_source_0.set_sync_gain(40, 1)
-        self.multi_rtl_source_0.set_gain(25, 1)
-        self.multi_rtl_source_0.set_center_freq(939.4e6, 1)
+        self.multi_rtl_source_1 = multi_rtl.multi_rtl_source(sample_rate=samp_rate, num_channels=2, ppm=-7, sync_center_freq=939.4e6, rtlsdr_id_strings= [ 
+          "0", 
+          "1", 
+          "2", 
+          "3", 
+          "4", 
+          "5", 
+          "6", 
+          "7", 
+          "8", 
+          "9", 
+          "10", 
+          "11", 
+          "12", 
+          "13", 
+          "14", 
+          "15", 
+          "16", 
+          "17", 
+          "18", 
+          "19", 
+          "20", 
+          "21", 
+          "22", 
+          "23", 
+          "24", 
+          "25", 
+          "26", 
+          "27", 
+          "28", 
+          "29", 
+          "30", 
+          "31", 
+          ])
+        self.multi_rtl_source_1.set_sync_gain(25, 0)
+        self.multi_rtl_source_1.set_gain(30, 0)
+        self.multi_rtl_source_1.set_center_freq(939.4e6, 0)
+        self.multi_rtl_source_1.set_sync_gain(25, 1)
+        self.multi_rtl_source_1.set_gain(30, 1)
+        self.multi_rtl_source_1.set_center_freq(939.4e6, 1)
           
-        self.blocks_tag_debug_0_0 = blocks.tag_debug(gr.sizeof_gr_complex*1, "", ""); self.blocks_tag_debug_0_0.set_display(True)
-        self.blocks_tag_debug_0 = blocks.tag_debug(gr.sizeof_gr_complex*1, "", ""); self.blocks_tag_debug_0.set_display(True)
+        self.blocks_head_1_0 = blocks.head(gr.sizeof_gr_complex*1, int(5*samp_rate))
+        self.blocks_head_1 = blocks.head(gr.sizeof_gr_complex*1, int(5*samp_rate))
+        self.blocks_head_0 = blocks.head(gr.sizeof_gr_complex*1, 1024)
         self.blocks_file_sink_0_0 = blocks.file_sink(gr.sizeof_gr_complex*1, "/home/piotr/Odbiornik_gsm/multi_rtl/examples/temp2", False)
         self.blocks_file_sink_0_0.set_unbuffered(False)
         self.blocks_file_sink_0 = blocks.file_sink(gr.sizeof_gr_complex*1, "/home/piotr/Odbiornik_gsm/multi_rtl/examples/temp1", False)
@@ -45,10 +79,10 @@ class test_sync(gr.top_block):
         ##################################################
         # Connections
         ##################################################
-        self.connect((self.multi_rtl_source_0, 0), (self.blocks_file_sink_0, 0))    
-        self.connect((self.multi_rtl_source_0, 1), (self.blocks_file_sink_0_0, 0))    
-        self.connect((self.multi_rtl_source_0, 1), (self.blocks_tag_debug_0, 0))    
-        self.connect((self.multi_rtl_source_0, 0), (self.blocks_tag_debug_0_0, 0))    
+        self.connect((self.blocks_head_1, 0), (self.blocks_file_sink_0, 0))    
+        self.connect((self.blocks_head_1_0, 0), (self.blocks_file_sink_0_0, 0))    
+        self.connect((self.multi_rtl_source_1, 0), (self.blocks_head_1, 0))    
+        self.connect((self.multi_rtl_source_1, 1), (self.blocks_head_1_0, 0))    
 
 
     def get_samp_rate(self):
@@ -56,6 +90,8 @@ class test_sync(gr.top_block):
 
     def set_samp_rate(self, samp_rate):
         self.samp_rate = samp_rate
+        self.blocks_head_1.set_length(int(5*self.samp_rate))
+        self.blocks_head_1_0.set_length(int(5*self.samp_rate))
 
 
 if __name__ == '__main__':

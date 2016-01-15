@@ -26,7 +26,11 @@ MAIN_TMPL = """\
   <category>Multi_rtl</category>
   <throttle>1</throttle>
   <import>import multi_rtl</import>
-  <make>multi_rtl.multi_rtl_source(sample_rate=\$sample_rate, num_channels=\$nchan, ppm=\$corr, sync_center_freq=\$sync_freq)
+  <make>multi_rtl.multi_rtl_source(sample_rate=\$sample_rate, num_channels=\$nchan, ppm=\$corr, sync_center_freq=\$sync_freq, rtlsdr_id_strings= [ 
+  #for $n in range($max_nchan)  
+  \$id_string$(n), 
+  #end for 
+  ])
 #for $n in range($max_nchan)
     \#if \$nchan() > $n
 self.\$(id).set_sync_gain(\$sync_gain$(n), $n)
@@ -35,6 +39,14 @@ self.\$(id).set_center_freq(\$freq$(n), $n)
     \#end if
 #end for
   </make>
+  <callback>set_freq_corr(\$corr)</callback>
+  <callback>set_sync_center_freq(\$sync_freq)</callback>  
+#for $n in range($max_nchan)
+  <callback>set_center_freq(\$freq$(n), $n)</callback>
+  <callback>set_gain(\$gain$(n), $n)</callback>
+  <callback>set_sync_gain(\$sync_gain$(n), $n)</callback>  
+#end for
+  
   <param>
     <name>Sample Rate (sps)</name>
     <key>sample_rate</key>
@@ -53,6 +65,7 @@ self.\$(id).set_center_freq(\$freq$(n), $n)
     <key>sync_freq</key>
     <value>100e6</value>
     <type>real</type>
+    <tab>Synchronization</tab>
   </param>
 
   <param>
@@ -91,6 +104,7 @@ PARAMS_TMPL = """
     <value>10</value>
     <type>real</type>
     <hide>\#if \$nchan() > $n then 'none' else 'all'#</hide>
+    <tab>Synchronization</tab>
   </param>
   <param>
     <name>Ch$(n): Frequency (Hz)</name>
@@ -109,7 +123,7 @@ PARAMS_TMPL = """
   <param>
     <name>Ch$(n): ID string</name>
     <key>id_string$(n)</key>
-    <value>""</value>
+    <value>"$(n)"</value>
     <type>string</type>
     <hide>\#if \$nchan() > $n then 'none' else 'all'#</hide>
   </param>

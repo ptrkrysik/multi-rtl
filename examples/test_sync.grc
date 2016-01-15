@@ -97,7 +97,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>2e6</value>
+      <value>1625000/6.0*4</value>
     </param>
   </block>
   <block>
@@ -128,7 +128,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(672, 147)</value>
+      <value>(736, 139)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -179,7 +179,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(672, 195)</value>
+      <value>(736, 227)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -203,7 +203,7 @@
     </param>
   </block>
   <block>
-    <key>blocks_tag_debug</key>
+    <key>blocks_head</key>
     <param>
       <key>alias</key>
       <value></value>
@@ -217,16 +217,12 @@
       <value></value>
     </param>
     <param>
-      <key>display</key>
-      <value>True</value>
-    </param>
-    <param>
       <key>_enabled</key>
       <value>True</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(472, 323)</value>
+      <value>(488, 155)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -234,23 +230,23 @@
     </param>
     <param>
       <key>id</key>
-      <value>blocks_tag_debug_0</value>
+      <value>blocks_head_1</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>num_items</key>
+      <value>int(5*samp_rate)</value>
     </param>
     <param>
       <key>type</key>
       <value>complex</value>
-    </param>
-    <param>
-      <key>filter</key>
-      <value>""</value>
-    </param>
-    <param>
-      <key>name</key>
-      <value></value>
-    </param>
-    <param>
-      <key>num_inputs</key>
-      <value>1</value>
     </param>
     <param>
       <key>vlen</key>
@@ -258,7 +254,7 @@
     </param>
   </block>
   <block>
-    <key>blocks_tag_debug</key>
+    <key>blocks_head</key>
     <param>
       <key>alias</key>
       <value></value>
@@ -272,16 +268,12 @@
       <value></value>
     </param>
     <param>
-      <key>display</key>
-      <value>True</value>
-    </param>
-    <param>
       <key>_enabled</key>
       <value>True</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(496, 43)</value>
+      <value>(488, 243)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -289,23 +281,23 @@
     </param>
     <param>
       <key>id</key>
-      <value>blocks_tag_debug_0_0</value>
+      <value>blocks_head_1_0</value>
+    </param>
+    <param>
+      <key>maxoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>minoutbuf</key>
+      <value>0</value>
+    </param>
+    <param>
+      <key>num_items</key>
+      <value>int(5*samp_rate)</value>
     </param>
     <param>
       <key>type</key>
       <value>complex</value>
-    </param>
-    <param>
-      <key>filter</key>
-      <value>""</value>
-    </param>
-    <param>
-      <key>name</key>
-      <value></value>
-    </param>
-    <param>
-      <key>num_inputs</key>
-      <value>1</value>
     </param>
     <param>
       <key>vlen</key>
@@ -323,16 +315,24 @@
       <value>939.4e6</value>
     </param>
     <param>
+      <key>id_string0</key>
+      <value>"0"</value>
+    </param>
+    <param>
       <key>gain0</key>
-      <value>25</value>
+      <value>30</value>
     </param>
     <param>
       <key>sync_gain0</key>
-      <value>40</value>
+      <value>25</value>
     </param>
     <param>
       <key>freq10</key>
       <value>100e6</value>
+    </param>
+    <param>
+      <key>id_string10</key>
+      <value>"10"</value>
     </param>
     <param>
       <key>gain10</key>
@@ -347,6 +347,10 @@
       <value>100e6</value>
     </param>
     <param>
+      <key>id_string11</key>
+      <value>"11"</value>
+    </param>
+    <param>
       <key>gain11</key>
       <value>10</value>
     </param>
@@ -357,6 +361,10 @@
     <param>
       <key>freq12</key>
       <value>100e6</value>
+    </param>
+    <param>
+      <key>id_string12</key>
+      <value>"12"</value>
     </param>
     <param>
       <key>gain12</key>
@@ -371,6 +379,10 @@
       <value>100e6</value>
     </param>
     <param>
+      <key>id_string13</key>
+      <value>"13"</value>
+    </param>
+    <param>
       <key>gain13</key>
       <value>10</value>
     </param>
@@ -381,6 +393,10 @@
     <param>
       <key>freq14</key>
       <value>100e6</value>
+    </param>
+    <param>
+      <key>id_string14</key>
+      <value>"14"</value>
     </param>
     <param>
       <key>gain14</key>
@@ -395,6 +411,10 @@
       <value>100e6</value>
     </param>
     <param>
+      <key>id_string15</key>
+      <value>"15"</value>
+    </param>
+    <param>
       <key>gain15</key>
       <value>10</value>
     </param>
@@ -405,6 +425,10 @@
     <param>
       <key>freq16</key>
       <value>100e6</value>
+    </param>
+    <param>
+      <key>id_string16</key>
+      <value>"16"</value>
     </param>
     <param>
       <key>gain16</key>
@@ -419,6 +443,10 @@
       <value>100e6</value>
     </param>
     <param>
+      <key>id_string17</key>
+      <value>"17"</value>
+    </param>
+    <param>
       <key>gain17</key>
       <value>10</value>
     </param>
@@ -429,6 +457,10 @@
     <param>
       <key>freq18</key>
       <value>100e6</value>
+    </param>
+    <param>
+      <key>id_string18</key>
+      <value>"18"</value>
     </param>
     <param>
       <key>gain18</key>
@@ -443,6 +475,10 @@
       <value>100e6</value>
     </param>
     <param>
+      <key>id_string19</key>
+      <value>"19"</value>
+    </param>
+    <param>
       <key>gain19</key>
       <value>10</value>
     </param>
@@ -455,16 +491,24 @@
       <value>939.4e6</value>
     </param>
     <param>
+      <key>id_string1</key>
+      <value>"1"</value>
+    </param>
+    <param>
       <key>gain1</key>
-      <value>25</value>
+      <value>30</value>
     </param>
     <param>
       <key>sync_gain1</key>
-      <value>40</value>
+      <value>25</value>
     </param>
     <param>
       <key>freq20</key>
       <value>100e6</value>
+    </param>
+    <param>
+      <key>id_string20</key>
+      <value>"20"</value>
     </param>
     <param>
       <key>gain20</key>
@@ -479,6 +523,10 @@
       <value>100e6</value>
     </param>
     <param>
+      <key>id_string21</key>
+      <value>"21"</value>
+    </param>
+    <param>
       <key>gain21</key>
       <value>10</value>
     </param>
@@ -489,6 +537,10 @@
     <param>
       <key>freq22</key>
       <value>100e6</value>
+    </param>
+    <param>
+      <key>id_string22</key>
+      <value>"22"</value>
     </param>
     <param>
       <key>gain22</key>
@@ -503,6 +555,10 @@
       <value>100e6</value>
     </param>
     <param>
+      <key>id_string23</key>
+      <value>"23"</value>
+    </param>
+    <param>
       <key>gain23</key>
       <value>10</value>
     </param>
@@ -513,6 +569,10 @@
     <param>
       <key>freq24</key>
       <value>100e6</value>
+    </param>
+    <param>
+      <key>id_string24</key>
+      <value>"24"</value>
     </param>
     <param>
       <key>gain24</key>
@@ -527,6 +587,10 @@
       <value>100e6</value>
     </param>
     <param>
+      <key>id_string25</key>
+      <value>"25"</value>
+    </param>
+    <param>
       <key>gain25</key>
       <value>10</value>
     </param>
@@ -537,6 +601,10 @@
     <param>
       <key>freq26</key>
       <value>100e6</value>
+    </param>
+    <param>
+      <key>id_string26</key>
+      <value>"26"</value>
     </param>
     <param>
       <key>gain26</key>
@@ -551,6 +619,10 @@
       <value>100e6</value>
     </param>
     <param>
+      <key>id_string27</key>
+      <value>"27"</value>
+    </param>
+    <param>
       <key>gain27</key>
       <value>10</value>
     </param>
@@ -561,6 +633,10 @@
     <param>
       <key>freq28</key>
       <value>100e6</value>
+    </param>
+    <param>
+      <key>id_string28</key>
+      <value>"28"</value>
     </param>
     <param>
       <key>gain28</key>
@@ -575,6 +651,10 @@
       <value>100e6</value>
     </param>
     <param>
+      <key>id_string29</key>
+      <value>"29"</value>
+    </param>
+    <param>
       <key>gain29</key>
       <value>10</value>
     </param>
@@ -585,6 +665,10 @@
     <param>
       <key>freq2</key>
       <value>100e6</value>
+    </param>
+    <param>
+      <key>id_string2</key>
+      <value>"2"</value>
     </param>
     <param>
       <key>gain2</key>
@@ -599,6 +683,10 @@
       <value>100e6</value>
     </param>
     <param>
+      <key>id_string30</key>
+      <value>"30"</value>
+    </param>
+    <param>
       <key>gain30</key>
       <value>10</value>
     </param>
@@ -609,6 +697,10 @@
     <param>
       <key>freq31</key>
       <value>100e6</value>
+    </param>
+    <param>
+      <key>id_string31</key>
+      <value>"31"</value>
     </param>
     <param>
       <key>gain31</key>
@@ -623,6 +715,10 @@
       <value>100e6</value>
     </param>
     <param>
+      <key>id_string3</key>
+      <value>"3"</value>
+    </param>
+    <param>
       <key>gain3</key>
       <value>10</value>
     </param>
@@ -633,6 +729,10 @@
     <param>
       <key>freq4</key>
       <value>100e6</value>
+    </param>
+    <param>
+      <key>id_string4</key>
+      <value>"4"</value>
     </param>
     <param>
       <key>gain4</key>
@@ -647,6 +747,10 @@
       <value>100e6</value>
     </param>
     <param>
+      <key>id_string5</key>
+      <value>"5"</value>
+    </param>
+    <param>
       <key>gain5</key>
       <value>10</value>
     </param>
@@ -657,6 +761,10 @@
     <param>
       <key>freq6</key>
       <value>100e6</value>
+    </param>
+    <param>
+      <key>id_string6</key>
+      <value>"6"</value>
     </param>
     <param>
       <key>gain6</key>
@@ -671,6 +779,10 @@
       <value>100e6</value>
     </param>
     <param>
+      <key>id_string7</key>
+      <value>"7"</value>
+    </param>
+    <param>
       <key>gain7</key>
       <value>10</value>
     </param>
@@ -683,6 +795,10 @@
       <value>100e6</value>
     </param>
     <param>
+      <key>id_string8</key>
+      <value>"8"</value>
+    </param>
+    <param>
       <key>gain8</key>
       <value>10</value>
     </param>
@@ -693,6 +809,10 @@
     <param>
       <key>freq9</key>
       <value>100e6</value>
+    </param>
+    <param>
+      <key>id_string9</key>
+      <value>"9"</value>
     </param>
     <param>
       <key>gain9</key>
@@ -716,11 +836,11 @@
     </param>
     <param>
       <key>corr</key>
-      <value>-7</value>
+      <value>0</value>
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(264, 123)</value>
+      <value>(232, 107)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -728,7 +848,7 @@
     </param>
     <param>
       <key>id</key>
-      <value>multi_rtl_source_0</value>
+      <value>multi_rtl_source_1</value>
     </param>
     <param>
       <key>maxoutbuf</key>
@@ -748,30 +868,30 @@
     </param>
     <param>
       <key>sync_freq</key>
-      <value>100e6</value>
+      <value>939.4e6</value>
     </param>
   </block>
   <connection>
-    <source_block_id>multi_rtl_source_0</source_block_id>
+    <source_block_id>blocks_head_1</source_block_id>
     <sink_block_id>blocks_file_sink_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>multi_rtl_source_0</source_block_id>
-    <sink_block_id>blocks_tag_debug_0_0</sink_block_id>
+    <source_block_id>blocks_head_1_0</source_block_id>
+    <sink_block_id>blocks_file_sink_0_0</sink_block_id>
     <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>multi_rtl_source_0</source_block_id>
-    <sink_block_id>blocks_file_sink_0_0</sink_block_id>
-    <source_key>1</source_key>
+    <source_block_id>multi_rtl_source_1</source_block_id>
+    <sink_block_id>blocks_head_1</sink_block_id>
+    <source_key>0</source_key>
     <sink_key>0</sink_key>
   </connection>
   <connection>
-    <source_block_id>multi_rtl_source_0</source_block_id>
-    <sink_block_id>blocks_tag_debug_0</sink_block_id>
+    <source_block_id>multi_rtl_source_1</source_block_id>
+    <sink_block_id>blocks_head_1_0</sink_block_id>
     <source_key>1</source_key>
     <sink_key>0</sink_key>
   </connection>

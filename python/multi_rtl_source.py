@@ -80,9 +80,9 @@ class multi_rtl_source(gr.hier_block2):
     def __init__(self, 
                  sample_rate=2e6, 
                  num_channels=2, 
-                 rtlsdr_id_strings=['00000001','00000002'], 
-                 sync_period=0.15, sync_center_freq=100e6, sync_gains=[25, 25], 
-                 center_freqs=[939400000, 939400000], gains=[25, 25], 
+                 rtlsdr_id_strings=[], 
+                 sync_period=0.15, sync_center_freq=100e6, sync_gains={}, 
+                 center_freqs={}, gains={}, 
                  ppm=0
                 ):
         gr.hier_block2.__init__(self,
