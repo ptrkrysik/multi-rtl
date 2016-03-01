@@ -9,7 +9,6 @@ addpath('utils');
 fs=1625000/6*4;
 
 %run python script recording data from two channel multi_rtl receiver
-%system('python ./record_multi_rtl.py');
 system('python ./test_sync.py');
 %load recorded data
 x1=read_complex_binary('temp1');
@@ -69,10 +68,10 @@ for ii=1:NN
 end
 [m,p2]=max((abs(xcorrs(:,:).')));
 figure(10)
-hold all
-xy = xcorrs(:,25001);
-plot(time, (angle(xy))/pi*180);
-title('faza')
+#hold all
+#xy = xcorrs(:,25001);
+#plot(time, (angle(xy))/pi*180);
+title('relative phase of the receivers')
 
 %delete('temp1')
 %delete('temp2')
@@ -81,5 +80,5 @@ figure
 hold all
 plot(x1_pow)
 plot(x2_pow)
-title('moc')
+title('power')
 pause

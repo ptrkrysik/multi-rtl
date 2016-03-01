@@ -71,9 +71,9 @@ class test_sync(gr.top_block):
         self.blocks_head_1_0 = blocks.head(gr.sizeof_gr_complex*1, int(5*samp_rate))
         self.blocks_head_1 = blocks.head(gr.sizeof_gr_complex*1, int(5*samp_rate))
         self.blocks_head_0 = blocks.head(gr.sizeof_gr_complex*1, 1024)
-        self.blocks_file_sink_0_0 = blocks.file_sink(gr.sizeof_gr_complex*1, "/home/piotr/Odbiornik_gsm/multi_rtl/examples/temp2", False)
+        self.blocks_file_sink_0_0 = blocks.file_sink(gr.sizeof_gr_complex*1, "temp2", False)
         self.blocks_file_sink_0_0.set_unbuffered(False)
-        self.blocks_file_sink_0 = blocks.file_sink(gr.sizeof_gr_complex*1, "/home/piotr/Odbiornik_gsm/multi_rtl/examples/temp1", False)
+        self.blocks_file_sink_0 = blocks.file_sink(gr.sizeof_gr_complex*1, "temp1", False)
         self.blocks_file_sink_0.set_unbuffered(False)
 
         ##################################################
