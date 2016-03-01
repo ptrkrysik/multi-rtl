@@ -135,9 +135,9 @@ class multi_rtl_source(gr.hier_block2):
 
             self.rtlsdr_sources[chan].set_sample_rate(self.sample_rate)
             self.rtlsdr_sources[chan].set_freq_corr(self.ppm, 0)
-            self.rtlsdr_sources[chan].set_dc_offset_mode(2, 0)
-            self.rtlsdr_sources[chan].set_iq_balance_mode(2, 0)
-            self.rtlsdr_sources[chan].set_gain_mode(False, 0)
+#            self.rtlsdr_sources[chan].set_dc_offset_mode(2, 0)
+#            self.rtlsdr_sources[chan].set_iq_balance_mode(2, 0)
+#            self.rtlsdr_sources[chan].set_gain_mode(False, 0)
             self.rtlsdr_sources[chan].set_if_gain(20, 0)
             self.rtlsdr_sources[chan].set_bb_gain(20, 0)
             self.rtlsdr_sources[chan].set_antenna("", 0)
