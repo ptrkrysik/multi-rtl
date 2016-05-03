@@ -36,7 +36,7 @@ sudo make install
 
 Preparation of RTL-SDR receivers
 ================================
-The prerequisite to use multi-rtl is having two or more RTL-SDR devices sharing common clock source. The simplest and cheapest way to achieve that is to use the hack invented by [Juha Vierinen](http://kaira.sgo.fi/2013/09/16-dual-channel-coherent-digital.html). In case that Juha's photos aren't clear enough look here [xxx](). 
+The prerequisite to use multi-rtl is having two or more RTL-SDR devices sharing common clock source. The simplest and cheapest way to achieve that is to use the [clever hack](http://kaira.sgo.fi/2013/09/16-dual-channel-coherent-digital.html) invented by Juha Vierinen. In case that Juha's photos aren't clear enough look here [xxx](). 
 
 If you need more than three channels use solution based on external clock and clock distribution circuitry like the one descibed by [YO3IIU](http://yo3iiu.ro/blog/?p=1450).
 
