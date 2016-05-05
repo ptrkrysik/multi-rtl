@@ -39,19 +39,19 @@ Preparation of RTL-SDR receivers
 The prerequisite to use multi-rtl is having two or more RTL-SDR devices sharing common clock source. The simplest and cheapest way to achieve that is to use the [clever hack](http://kaira.sgo.fi/2013/09/16-dual-channel-coherent-digital.html) invented by Juha Vierinen. The modification is presented on the photos below:
 ![dongles with common clock](docs/images/dongles_with_common_clock.jpg) ![master](docs/images/master.jpg) ![slave](docs/images/slave_with_replaced_oscillator.jpg)
 
-In the above example one of the dongles has replaced oscillator and takes clock reference from another dongle.
+One of the dongles has replaced oscillator and takes clock reference from another one.
 
 If you need more than three channels use solution based on external clock and clock distribution circuitry like the one descibed by [YO3IIU](http://yo3iiu.ro/blog/?p=1450).
 
-You can also set identifiers dongles so the channels of your multi-rtl receiver can be distinguished and identified. To do this set different identifier to each dongle with use of:
+You can also set identifiers dongles so it will be possible to distinguish channels of your multi-rtl receiver. To do this set different identifier to each dongle with use of:
 ```sh
 rtl_eeprom -d <device_index> -s <serial_number>
 ```
-If you connect dongles one by one (so only one is connected at a time) `device_index` is 0. `serial_number` is a unique number that you assign to your dongle acting as a channel. In the rest of the README it is assumed that consecutive numbers of the following form are used as numbers of channels: `00000001, 00000002, 00000003, ...`
+If you connect dongles one by one (so only one is connected at a time) `device_index` is 0. `serial_number` is a unique number that you assign to your dongle acting as a channel. In the rest of the README it is assumed that consecutive numbers of the following form are used as numbers of channels: `00000001, 00000002, 00000003, ...`.
 
 Usage
 ==================
-
+Multi-rtl is a GNU Radio block. The most natural way to use it is to build a flowgraph in GNU Radio companion.
 
 How it works in details
 ==================
