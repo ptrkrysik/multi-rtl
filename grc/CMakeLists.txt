@@ -33,5 +33,6 @@ add_custom_target(multi_rtl_grc_xml_blocks ALL DEPENDS ${xml_blocks})
 
 install(FILES
     ${xml_blocks}
-    multi_rtl_vector_sink_cn.xml DESTINATION share/gnuradio/grc/blocks
+#    multi_rtl_vector_sink_cn.xml 
+    DESTINATION share/gnuradio/grc/blocks
 )
