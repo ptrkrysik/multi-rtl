@@ -37,12 +37,12 @@ def xcorr(X,Y,maxlag):
     N_nextpow2 = ceil(log(N + maxlag,2))
     M = 2**N_nextpow2
     if len(X) < M:
-        postpad_X = M-len(X)-maxlag
+        postpad_X = int(M-len(X)-maxlag)
     else:
         postpad_X = 0
 
     if len(Y) < M:
-        postpad_Y = M-len(Y)
+        postpad_Y = int(M-len(Y))
     else:
         postpad_Y = 0
         
