@@ -39,7 +39,7 @@ Preparation of RTL-SDR receivers
 The prerequisite to use multi-rtl is having two or more RTL-SDR devices sharing common clock source. The simplest and cheapest way to achieve that is to use the [clever hack](http://kaira.sgo.fi/2013/09/16-dual-channel-coherent-digital.html) invented by Juha Vierinen. The modification that he found is presented on the photos below:
 ![dongles with common clock](docs/images/dongles_with_common_clock.jpg) ![master](docs/images/master.jpg) ![slave](docs/images/slave_with_replaced_oscillator.jpg)
 
-One of the dongles has replaced oscillator and takes clock reference from another one.
+The dongle on the right hand side has replaced oscillator and takes clock reference from the dongle on the left.
 
 If you need more than three channels use solution based on external clock and clock distribution circuitry like the one descibed by [YO3IIU](http://yo3iiu.ro/blog/?p=1450).
 
@@ -53,30 +53,35 @@ Usage
 ==================
 Multi-rtl is a GNU Radio block. The most natural way to use it is to build a flowgraph in `gnuradio-companion` (the GNU Radio's GUI tool). 
 `multi-rtl` viewed in `gnuradio-companion` has options grouped into two cathegories:
--`General` options - that are used during normal operation of the receiver:
-    -`Freq. Corr. (ppm)` - reference clock offset frequency correction in points per milion (ppm),
-    -`Num Channels` - number of channels of the reciver,
-    -`Chn: Frequency (Hz)` - central frequency for the `n`-th channel,
-    -`Chn: RF Gain (dB)` - gain of `n`-th channel in dB,
-    -`Chn: Gain Mode` - gain mode of the `n`-th channel (manual or automatic),
-    -`Chn: ID string` -
--`Synchronization` options - that are used for the purpose of synchronization of the receivers:
-    -`Sync Frequency (Hz)` - carrier frequency of the signal that is used for synchronization,
-    -`Chn: Sync RF Gain (dB)` - gain of the `n`-th channel during synchronization in dB.
+* `General` options - that are used during normal operation of the receiver:
+    * `Freq. Corr. (ppm)` - reference clock offset frequency correction in points per milion (ppm),
+    * `Num Channels` - number of channels of the reciver,
+    * `Chn: Frequency (Hz)` - central frequency for the `n`-th channel,
+    * `Chn: RF Gain (dB)` - gain of `n`-th channel in dB,
+    * `Chn: Gain Mode` - gain mode of the `n`-th channel (manual or automatic),
+    * `Chn: ID string` - serial number of a RTL-SDR receiver associated with `n`-th channel,
+* `Synchronization` options - that are used for the purpose of synchronization of the receivers:
+    * `Sync Frequency (Hz)` - carrier frequency of the signal that is used for synchronization,
+    * `Chn: Sync RF Gain (dB)` - gain of the `n`-th channel during synchronization in dB.
 
 The `General` options are similar to [`osmocom source`](http://sdr.osmocom.org/trac/wiki/GrOsmoSDR) block. The reason is that `multi-rtl` is hierarhical block that under the hood uses as many `osmocom source` blocks as there are channels in the receiver and passes some of the options directly to them. In comparison with `osmocom source` `multi-rtl` doesn't include some options that don't apply to RTL-SDR receivers, like: turning on/off automatic dc offset removal, regulation of baseband gain, automatic IQ imbalance correction. 
 
 Synchronization is performend when `multi-rtl` is started and when user manually resynchronize the receiver's channels by calling `synchronize` function. During this process receiver's channels are configured according to `Synchronization` options. The `Sync Frequency (Hz)` should point to a carrier frequency of a signal that has good auto-correlation properties (good enough for particular application) with high and narrow peak in the central part. These properties have direct impact on accuracy of the synchronization. Examples of signals that can be used for synchronization are:
--GSM broatcasting signals
--CDMA 
--DVB-T television
--DAB radio - 
--FM radio - auto-correlation function of FM radio varry a lot in time as it is dependend on the signal that is transmitted - noisy music results with signal that has much better auto-correlation than speech or silence.
+* GSM signal (i.e. GSM900 - 925-960 MHz)
+* CDMA signals (UMTS900, WCDMA),
+* DVB-T television (DVB-T channels can be found in 174-230 MHz and 470-862MHz frequency bands)
+* DAB radio (174–230 MHz)
+* FM radio (87.5 to 108.0) `caution:` auto-correlation function of FM radio varry a lot in time as it is dependend on the signal that is transmitted - noisy music results with signal that has much better auto-correlation than speech or silence.
 
 In `multi-rtl`'s repository there is an example of `gnuradio-companion` application ([multi-rtl/examples/mutlirtl_rx_to_cfile_2chan.grc](multi-rtl/examples/mutlirtl_rx_to_cfile_2chan.grc)) that uses two channel `multi-rtl` receiver and stores the captured samples to files. The result of transformation to Python file with use of `gnuradio-companion` is stored here [multi-rtl/examples/mutlirtl_rx_to_cfile_2chan.py](multi-rtl/examples/mutlirtl_rx_to_cfile_2chan.py). It can be used from commandline and in shell scripts. To see it's commandline parameters go into `multi_rtl/examples` directory and call:
 ```sh
-multi-rtl/examples/mutlirtl_rx_to_cfile_2chan.py
+multi-rtl/examples/mutlirtl_rx_to_cfile_2chan.py --help
 ``` 
+
+One of the examples of use of the `mutlirtl_rx_to_cfile_2chan.py` is to record downlink and uplink of a given GSM `C0` (BCCH) carrier. Let's assume that the downlink of the C0 carrier frequency is at 939MHz (`freq-ch0`). Uplink of this radio channel is at 894MHz (`freq-ch1`) as uplink-downlink separation for GSM900 is 45MHz. For synchronization we will use downlink of the `C0` channel (`sync-freq`), because it provides good enough accuracy for this application. As sampling frequency (`samp-rate`) `4*GSM_symbol_rate=4*1625000/6=1083333.3333(...)` will be used. Gains will be set to `30 dB` (`gain-ch0`, `gain-ch1`, `sync-gain-ch0`, `sync-gain-ch1`). Samples of the signals will be stored to `downlink.cfile` (`fname-ch0`) and `uplink.cfile` (`fname-ch1`). Finally the program will be invoked with following options:
+```sh
+mutlirtl_rx_to_cfile_2chan.py --samp-rate 1083333.3333333333 --freq-ch0 939M --freq-ch1 894M --sync-freq 939e6 --gain-ch0 30 --gain-ch1 30 --sync-gain-ch0 30 --sync-gain-ch1 30 --fname-ch0 downlink.cfile --fname-ch1 uplink-cfile
+```
 
 How it works in details
 ==================
@@ -86,4 +91,4 @@ Author
 ==================
 Piotr Krysik <ptrkrysik@gmail.com>
 
-If you use the ideas from multi-rtl to implement multichannel receiver yourself please give the credit to the multi-rtl's author and the multi-rtl project.
+If you use the ideas from multi-rtl to implement multichannel receiver yourself, please give the credit to the multi-rtl's author and the multi-rtl project by including this information in your project's description.
