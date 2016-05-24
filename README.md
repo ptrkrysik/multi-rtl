@@ -86,9 +86,9 @@ One of the examples of use of the `mutlirtl_rx_to_cfile_2chan.py` is to record d
 mutlirtl_rx_to_cfile_2chan.py --samp-rate 1083333.3333333333 --freq-ch0 939M --freq-ch1 894M --sync-freq 939e6 --gain-ch0 30 --gain-ch1 30 --sync-gain-ch0 30 --sync-gain-ch1 30 --fname-ch0 downlink.cfile --fname-ch1 uplink-cfile
 ```
 
-How it works in details
+How it works
 ==================
-For details what is original input of `Multi-rtl` to previous efforts to make multichannel receiver, read the author's blog post.
+For details what is original input of `Multi-rtl` to previous efforts to make multichannel receiver, read the author's [github page](ptrkrysik.github.io).
 
 TODO
 ====
