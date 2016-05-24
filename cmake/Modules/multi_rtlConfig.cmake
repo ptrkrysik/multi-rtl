@@ -13,7 +13,7 @@ FIND_PATH(
 
 FIND_LIBRARY(
     MULTI_RTL_LIBRARIES
-    NAMES gnuradio-multi_rtl
+    NAMES multi_rtl
     HINTS $ENV{MULTI_RTL_DIR}/lib
         ${PC_MULTI_RTL_LIBDIR}
     PATHS ${CMAKE_INSTALL_PREFIX}/lib

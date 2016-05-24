@@ -33,12 +33,12 @@ if(NOT multi_rtl_sources)
 	return()
 endif(NOT multi_rtl_sources)
 
-add_library(gnuradio-multi_rtl SHARED ${multi_rtl_sources})
-target_link_libraries(gnuradio-multi_rtl ${Boost_LIBRARIES} ${GNURADIO_ALL_LIBRARIES})
-set_target_properties(gnuradio-multi_rtl PROPERTIES DEFINE_SYMBOL "gnuradio_multi_rtl_EXPORTS")
+add_library(multi_rtl SHARED ${multi_rtl_sources})
+target_link_libraries(multi_rtl ${Boost_LIBRARIES} ${GNURADIO_ALL_LIBRARIES})
+set_target_properties(multi_rtl PROPERTIES DEFINE_SYMBOL "multi_rtl_EXPORTS")
 
 if(APPLE)
-    set_target_properties(gnuradio-multi_rtl PROPERTIES
+    set_target_properties(multi_rtl PROPERTIES
         INSTALL_NAME_DIR "${CMAKE_INSTALL_PREFIX}/lib"
     )
 endif(APPLE)
@@ -46,7 +46,7 @@ endif(APPLE)
 ########################################################################
 # Install built library files
 ########################################################################
-install(TARGETS gnuradio-multi_rtl
+install(TARGETS multi_rtl
     LIBRARY DESTINATION lib${LIB_SUFFIX} # .so/.dylib file
     ARCHIVE DESTINATION lib${LIB_SUFFIX} # .lib file
     RUNTIME DESTINATION bin              # .dll file
@@ -71,7 +71,7 @@ target_link_libraries(
   ${GNURADIO_RUNTIME_LIBRARIES}
   ${Boost_LIBRARIES}
   ${CPPUNIT_LIBRARIES}
-  gnuradio-multi_rtl
+  multi_rtl
 )
 
 GR_ADD_TEST(test_multi_rtl test-multi_rtl)
