@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # 
-# Copyright 2015 <+YOU OR YOUR COMPANY+>.
+# Copyright 2016 Piotr Krysik <ptrkrysik@gmail.com>.
 # 
 # This is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -127,21 +127,21 @@ class multi_rtl_source(gr.hier_block2):
                                                                   #vsinks are full
 
         for chan in xrange(0,self.num_channels):
-            if chan <= len(rtlsdr_id_strings):
+            if (chan <= len(rtlsdr_id_strings)) and (rtlsdr_id_strings is not ""):
                 rtl_args= "numchan=" + str(1) + " " + "rtl=" + rtlsdr_id_strings[chan]
                 self.rtlsdr_sources[chan] = osmosdr.source( args=rtl_args) 
             else:
+                rtl_args= "numchan=" + str(1) + " " + "rtl=" + str(chan)            
                 self.rtlsdr_sources[chan] = osmosdr.source( args="numchan=" + str(1) )
 
             self.rtlsdr_sources[chan].set_sample_rate(self.sample_rate)
             self.rtlsdr_sources[chan].set_freq_corr(self.ppm, 0)
 #            self.rtlsdr_sources[chan].set_dc_offset_mode(2, 0)
 #            self.rtlsdr_sources[chan].set_iq_balance_mode(2, 0)
-#            self.rtlsdr_sources[chan].set_gain_mode(False, 0)
-            self.rtlsdr_sources[chan].set_if_gain(20, 0)
-            self.rtlsdr_sources[chan].set_bb_gain(20, 0)
+            self.rtlsdr_sources[chan].set_gain_mode(False, 0)
+            self.rtlsdr_sources[chan].set_if_gain(24, 0)
             self.rtlsdr_sources[chan].set_antenna("", 0)
-            self.rtlsdr_sources[chan].set_bandwidth(0, 0)
+#            self.rtlsdr_sources[chan].set_bandwidth(0, 0)
 
         self.set_freq_corr(self.ppm)
         self.apply_synchronization_settings()
@@ -186,7 +186,7 @@ class multi_rtl_source(gr.hier_block2):
 #            print "sqrt(var0/var(sync_data[chan])): ",sqrt(var0/var(sync_data[chan]))
         #set delays
         for chan in xrange(0,self.num_channels):        
-            print "delay",chan,": ",self.delays[chan],' phase diff:', (angle(self.phase_amplitude_corrections[chan])/pi*180)
+            print "Delay of channel ",chan,": ",self.delays[chan],' phase diff: ', (angle(self.phase_amplitude_corrections[chan])/pi*180), " [deg]"
             self.delay_blocks[chan].set_dly(-int(self.delays[chan]))
         
         self.state = "work"
@@ -198,7 +198,7 @@ class multi_rtl_source(gr.hier_block2):
             self.state = "sync"
             self.full_vsinks_counter = 0
 
-            time.sleep(1.0) #this is potential race condition, it would be good to avoid this in order to clear 
+            time.sleep(0.1) #this is potential race condition, it would be good to avoid this in order to clear 
             self.vsink.reset()
     
     def apply_synchronization_settings(self):
@@ -256,11 +256,11 @@ class multi_rtl_source(gr.hier_block2):
     def get_gain_range(self, name, chan=0): #malo istotna i dziwna
         self.rtlsdr_sources[chan].get_gain_range(name,0)
     
-    def set_gain_mode(self, automatic, chan=0):
-        self.rtlsdr_sources[chan].set_gain_mode(automatic,0)
+    def set_gain_mode(self, mode, chan=0):
+        self.rtlsdr_sources[chan].set_gain_mode(mode,0)
         
     def get_gain_mode(self, chan=0):
-        return self.rtlsdr_sources[chan].get_gain_mode(0)
+        return self.rtlsdr_sources[chan].get_gain_mode(chan)
         
     def set_gain(self, gain, chan=0):
         self.gains[chan] = gain
@@ -305,6 +305,11 @@ class multi_rtl_source(gr.hier_block2):
         self.sync_gains[chan] = gain
         if self.state == "sync":
             self.rtlsdr_sources[chan].set_gain(gain,0)
+
+#    def set_sync_gain_mode(self, automatic, chan=0):
+#        self.sync_gain_modes[chan] = gain
+#        if self.state == "sync":
+#            self.rtlsdr_sources[chan].set_gain_mode(automatic,0)
         
 #    def set_sync_gain(self, gain, name, chan):
 #        pass

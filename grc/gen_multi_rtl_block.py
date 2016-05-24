@@ -36,6 +36,7 @@ MAIN_TMPL = """\
 self.\$(id).set_sync_gain(\$sync_gain$(n), $n)
 self.\$(id).set_gain(\$gain$(n), $n)
 self.\$(id).set_center_freq(\$freq$(n), $n)
+self.\$(id).set_gain_mode(\$gain_mode$(n), $n)
     \#end if
 #end for
   </make>
@@ -44,7 +45,8 @@ self.\$(id).set_center_freq(\$freq$(n), $n)
 #for $n in range($max_nchan)
   <callback>set_center_freq(\$freq$(n), $n)</callback>
   <callback>set_gain(\$gain$(n), $n)</callback>
-  <callback>set_sync_gain(\$sync_gain$(n), $n)</callback>  
+  <callback>set_gain_mode(\$gain_mode$(n), $n)</callback>
+  <callback>set_sync_gain(\$sync_gain$(n), $n)</callback>
 #end for
   
   <param>
@@ -119,6 +121,21 @@ PARAMS_TMPL = """
     <value>10</value>
     <type>real</type>
     <hide>\#if \$nchan() > $n then 'none' else 'all'#</hide>
+  </param>
+  <param>
+    <name>Ch$(n): Gain Mode</name>
+    <key>gain_mode$(n)</key>
+    <value>False</value>
+    <type>bool</type>
+    <hide>\#if \$nchan() > $n then 'none' else 'all'#</hide>
+    <option>
+      <name>Manual</name>
+      <key>False</key>
+    </option>
+    <option>
+      <name>Automatic</name>
+      <key>True</key>
+    </option>
   </param>
   <param>
     <name>Ch$(n): ID string</name>
