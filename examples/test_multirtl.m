@@ -9,7 +9,7 @@ addpath('utils');
 fs=1625000/6*4;
 
 %run python script recording data from two channel multi_rtl receiver
-system('python ./test_sync.py');
+system(['python ./mutlirtl_rx_to_cfile_2chan.py --samp-rate ' num2str(1625000/6*4,'%.12f') ' --fname-ch0 "temp1" --fname-ch1 "temp2" -N ' num2str(round(5*fs))]);
 
 %load recorded data
 x1=read_complex_binary('temp1');
