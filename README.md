@@ -76,7 +76,7 @@ Synchronization is performend when `multi-rtl` is started and when user manually
 In `Multi-rtl`'s repository there is an example of `gnuradio-companion` application ([multi-rtl/examples/mutlirtl_rx_to_cfile_2chan.grc](multi-rtl/examples/mutlirtl_rx_to_cfile_2chan.grc)) that uses two channel `Multi-rtl` receiver and stores the captured samples to files. The flowgraph of the application is presented below:
 ![Sample two channel application using Multi-rtl](https://raw.githubusercontent.com/ptrkrysik/ptrkrysik.github.io/master/images/multi_rx_to_cfile_2chan.png)
 
- The result of transformation to Python file with use of `gnuradio-companion` is stored here [multi-rtl/examples/mutlirtl_rx_to_cfile_2chan.py](multi-rtl/examples/mutlirtl_rx_to_cfile_2chan.py). It can be used from commandline and in shell scripts. To see it's commandline parameters go into `multi_rtl/examples` directory and call:
+ The result of transformation to Python file with use of `gnuradio-companion` is stored here [multi-rtl/examples/mutlirtl_rx_to_cfile_2chan.py](multi-rtl/examples/mutlirtl_rx_to_cfile_2chan.py). It can be used from commandline and in shell scripts. To see it's commandline parameters go into `multi-rtl/examples` directory and call:
 ```sh
 multi-rtl/examples/mutlirtl_rx_to_cfile_2chan.py --help
 ``` 
