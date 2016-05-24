@@ -2,7 +2,7 @@ Multi-rtl
 ==================
 `Multi-rtl` is a GNU Radio block that transforms cheap multiple `RTL-SDR` receivers into multi-channel receiver. 
 
-`Multi-rtl` is the first software solution that enables synchronous reception with each channel based on a `RTL-SDR` receiver tuned to a different central frequency. The synchronization is done automatically and in software - without the need for any additional hardware.
+`Multi-rtl` is the first software solution that enables synchronous reception with each channel based on a `RTL-SDR` receiver tuned to a different central frequency. The synchronization is done automatically and in software - without the need for any additional electronical hardware.
 
 Installation
 ==================
