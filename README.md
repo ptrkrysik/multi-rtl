@@ -20,7 +20,7 @@ You can also use [PyBombs](https://github.com/gnuradio/pybombs) to install `Mult
 sudo pybombs install gr-osmosdr
 ```
 
-To install `Multi-rtl` first download its source code source code:
+To install `Multi-rtl` first download its source code:
 ```sh
 git clone https://github.com/ptrkrysik/multi_rtl.git
 ```
@@ -94,7 +94,7 @@ One of the examples of use of the `mutlirtl_rx_to_cfile_2chan.py` is to record d
 
 How it works
 ==================
-For details what is original contribution of `Multi-rtl` to previous efforts to make multi-channel receiver, read the author's [github page](ptrkrysik.github.io).
+For details how `Multi-rtl` works and what is its original contribution to previous efforts to make multi-channel receiver, read the author's [github page](ptrkrysik.github.io).
 
 TODO
 ====
