@@ -24,7 +24,7 @@
 
 #include <gnuradio/attributes.h>
 
-#ifdef gnuradio_multi_rtl_EXPORTS
+#ifdef multi_rtl_EXPORTS
 #  define MULTI_RTL_API __GR_ATTR_EXPORT
 #else
 #  define MULTI_RTL_API __GR_ATTR_IMPORT
