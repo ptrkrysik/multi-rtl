@@ -10,7 +10,7 @@ To install `Multi-rtl` installation of gnuradio-dev, gr-osmosdr and python-scipy
 
 On Debian based systems to install programs required by `Multi-rtl` use following command:
 ```sh
-sudo apt-get install gr-osmosdr gnuradio-dev cmake swig build-essential doxygen
+sudo apt-get install gr-osmosdr gnuradio-dev cmake swig build-essential doxygen python-scipy
 ```
 
 You can also use [PyBombs](https://github.com/gnuradio/pybombs) to install `Multi-rtl`'s prerequisites. Installation of PyBombs itself is described in [here](https://github.com/gnuradio/pybombs#installation). After installing it execute:
