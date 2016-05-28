@@ -4,6 +4,16 @@ Multi-rtl
 
 `Multi-rtl` is the first software solution that enables synchronous reception with each channel based on a `RTL-SDR` receiver tuned to a different central frequency. The synchronization is done automatically and in software - without the need for any additional electronical hardware.
 
+Mailing list
+============
+Current Multi-rtl project's mailing list address is following:
+
+multi-rtl@googlegroups.com
+
+To join the group with any e-mail addres (google account is not required) use this link:
+
+https://groups.google.com/forum/#!forum/multi-rtl/join
+
 Installation
 ==================
 To install `Multi-rtl` installation of gnuradio-dev, gr-osmosdr and python-scipy is required. Tools typically used for building `GNU Radio` - cmake, swig and g++ - are also needed.
