@@ -1,14 +1,14 @@
-Multi-rtl
+Multi-RTL
 ==================
-`Multi-rtl` is a GNU Radio block that transforms cheap multiple `RTL-SDR` receivers into multi-channel receiver. 
+`Multi-RTL` is a GNU Radio block that transforms cheap multiple `RTL-SDR` receivers into multi-channel receiver. 
 
-`Multi-rtl` is the first software solution that enables synchronous reception with each channel based on a `RTL-SDR` receiver tuned to a different central frequency. The synchronization is done automatically and in software - without the need for any additional electronical hardware.
+`Multi-RTL` is the first software solution that enables synchronous reception with each channel based on a `RTL-SDR` receiver tuned to a different central frequency. The synchronization is done automatically and in software - without the need for any additional electronical hardware.
 
 Mailing list
 ============
-Current Multi-rtl project's mailing list address is following:
+Current Multi-RTL project's mailing list address is following:
 
-multi-rtl@googlegroups.com
+Multi-RTL@googlegroups.com
 
 To join the group with any e-mail addres (google account is not required) use this link:
 
@@ -16,19 +16,19 @@ https://groups.google.com/forum/#!forum/multi-rtl/join
 
 Installation
 ==================
-To install `Multi-rtl` installation of gnuradio-dev, gr-osmosdr and python-scipy is required. Tools typically used for building `GNU Radio` - cmake, swig and g++ - are also needed.
+To install `Multi-RTL` installation of gnuradio-dev, gr-osmosdr and python-scipy is required. Tools typically used for building `GNU Radio` - cmake, swig and g++ - are also needed.
 
-On Debian based systems to install programs required by `Multi-rtl` use following command:
+On Debian based systems to install programs required by `Multi-RTL` use following command:
 ```sh
 sudo apt-get install gr-osmosdr gnuradio-dev cmake swig build-essential doxygen python-scipy
 ```
 
-You can also use [PyBombs](https://github.com/gnuradio/pybombs) to install `Multi-rtl`'s prerequisites. Installation of PyBombs itself is described in [here](https://github.com/gnuradio/pybombs#installation). After installing it execute:
+You can also use [PyBombs](https://github.com/gnuradio/pybombs) to install `Multi-RTL`'s prerequisites. Installation of PyBombs itself is described in [here](https://github.com/gnuradio/pybombs#installation). After installing it execute:
 ```sh
 sudo pybombs install gr-osmosdr
 ```
 
-To install `Multi-rtl` first download its source code:
+To install `Multi-RTL` first download its source code:
 ```sh
 git clone https://github.com/ptrkrysik/multi_rtl.git
 ```
@@ -44,14 +44,14 @@ sudo ldconfig
 
 Preparation of RTL-SDR receivers
 ================================
-The prerequisite to use `Multi-rtl` is having two or more `RTL-SDR` devices sharing common clock source. The simplest and cheapest way to achieve that is to use the [clever hack](http://kaira.sgo.fi/2013/09/16-dual-channel-coherent-digital.html) invented by Juha Vierinen. The modification that he found is presented on the photos below:
+The prerequisite to use `Multi-RTL` is having two or more `RTL-SDR` devices sharing common clock source. The simplest and cheapest way to achieve that is to use the [clever hack](http://kaira.sgo.fi/2013/09/16-dual-channel-coherent-digital.html) invented by Juha Vierinen. The modification that he found is presented on the photos below:
 ![dongles with common clock](docs/images/dongles_with_common_clock.jpg) ![master](docs/images/master.jpg) ![slave](docs/images/slave_with_replaced_oscillator.jpg)
 
 The dongle on the right hand side has replaced oscillator and takes clock reference from the dongle on the left.
 
 If you need more than three channels use solution based on external clock and clock distribution circuitry like the one descibed by [YO3IIU](http://yo3iiu.ro/blog/?p=1450).
 
-You can also set identifiers dongles so it will be possible to distinguish channels of your `Multi-rtl` receiver. To do this set different identifier to each dongle with use of:
+You can also set identifiers dongles so it will be possible to distinguish channels of your `Multi-RTL` receiver. To do this set different identifier to each dongle with use of:
 ```sh
 rtl_eeprom -d <device_index> -s <serial_number>
 ```
@@ -59,8 +59,8 @@ If you connect dongles one by one (so only one is connected at a time) `device_i
 
 Usage
 ==================
-Multi-rtl is a GNU Radio block. The most natural way to use it is to build a flowgraph in `gnuradio-companion` (the GNU Radio's GUI tool). 
-`Multi-rtl` viewed in `gnuradio-companion` has options grouped into two cathegories:
+Multi-RTL is a GNU Radio block. The most natural way to use it is to build a flowgraph in `gnuradio-companion` (the GNU Radio's GUI tool). 
+`Multi-RTL` viewed in `gnuradio-companion` has options grouped into two cathegories:
 * `General` options - that are used during normal operation of the receiver:
     * `Freq. Corr. (ppm)` - reference clock offset frequency correction in points per milion (ppm),
     * `Num Channels` - number of channels of the reciver,
@@ -72,17 +72,17 @@ Multi-rtl is a GNU Radio block. The most natural way to use it is to build a flo
     * `Sync Frequency (Hz)` - carrier frequency of the signal that is used for synchronization,
     * `Chn: Sync RF Gain (dB)` - gain of the `n`-th channel during synchronization in dB.
 
-The `General` options are similar to [`osmocom source`](http://sdr.osmocom.org/trac/wiki/GrOsmoSDR) block. The reason is that `Multi-rtl` is hierarhical block that under the hood uses as many `osmocom source` blocks as there are channels in the receiver and passes some of the options directly to them. In comparison with `osmocom source` `Multi-rtl` doesn't include some options that don't apply to RTL-SDR receivers, like: turning on/off automatic dc offset removal, regulation of baseband gain, automatic IQ imbalance correction. 
+The `General` options are similar to [`osmocom source`](http://sdr.osmocom.org/trac/wiki/GrOsmoSDR) block. The reason is that `Multi-RTL` is hierarhical block that under the hood uses as many `osmocom source` blocks as there are channels in the receiver and passes some of the options directly to them. In comparison with `osmocom source` `Multi-RTL` doesn't include some options that don't apply to RTL-SDR receivers, like: turning on/off automatic dc offset removal, regulation of baseband gain, automatic IQ imbalance correction. 
 
-Synchronization is performend when `Multi-rtl` is started and when user manually resynchronize the receiver's channels by calling `synchronize` function. During this process receiver's channels are configured according to `Synchronization` options. The `Sync Frequency (Hz)` should point to a carrier frequency of a signal that has good auto-correlation properties (good enough for particular application), with high and narrow peak in the central part. These properties have direct impact on accuracy of the synchronization. Examples of signals that can be used for synchronization are:
+Synchronization is performend when `Multi-RTL` is started and when user manually resynchronize the receiver's channels by calling `synchronize` function. During this process receiver's channels are configured according to `Synchronization` options. The `Sync Frequency (Hz)` should point to a carrier frequency of a signal that has good auto-correlation properties (good enough for particular application), with high and narrow peak in the central part. These properties have direct impact on accuracy of the synchronization. Examples of signals that can be used for synchronization are:
 * GSM signal (i.e. GSM900 - 925-960 MHz)
 * CDMA signals (UMTS900, WCDMA),
 * DVB-T television (DVB-T channels can be found in 174-230 MHz and 470-862MHz frequency bands)
 * DAB radio (174–230 MHz),
 * FM radio (87.5 to 108.0MHz) `caution:` auto-correlation function of FM radio varry a lot in time as it is dependend on the signal that is transmitted - noisy music results with signal that has much better auto-correlation than speech or silence.
 
-In `Multi-rtl`'s repository there is an example of `gnuradio-companion` application ([multi-rtl/examples/mutlirtl_rx_to_cfile_2chan.grc](examples/mutlirtl_rx_to_cfile_2chan.grc)) that uses two channel `Multi-rtl` receiver and stores the captured samples to files. The flowgraph of the application is presented below:
-![Sample two channel application using Multi-rtl](https://raw.githubusercontent.com/ptrkrysik/ptrkrysik.github.io/master/images/multi_rx_to_cfile_2chan.png)
+In `Multi-RTL`'s repository there is an example of `gnuradio-companion` application ([multi-rtl/examples/mutlirtl_rx_to_cfile_2chan.grc](examples/mutlirtl_rx_to_cfile_2chan.grc)) that uses two channel `Multi-RTL` receiver and stores the captured samples to files. The flowgraph of the application is presented below:
+![Sample two channel application using Multi-RTL](https://raw.githubusercontent.com/ptrkrysik/ptrkrysik.github.io/master/images/multi_rx_to_cfile_2chan.png)
 
  The result of transformation to Python file with use of `gnuradio-companion` is stored here [multi-rtl/examples/mutlirtl_rx_to_cfile_2chan.py](examples/mutlirtl_rx_to_cfile_2chan.py). It can be used from commandline and in shell scripts. To see it's commandline parameters go into `multi-rtl/examples` directory and call:
 ```sh
@@ -102,7 +102,7 @@ One of the examples of use of the `mutlirtl_rx_to_cfile_2chan.py` is to record d
 
 How it works
 ==================
-For details how `Multi-rtl` works and what is its original contribution to previous efforts to make multi-channel receiver, read the author's [github page](ptrkrysik.github.io).
+For details how `Multi-RTL` works and what is its original contribution to previous efforts to make multi-channel receiver, read the author's [github page](ptrkrysik.github.io).
 
 TODO
 ====
@@ -112,4 +112,4 @@ Author
 ==================
 Piotr Krysik <ptrkrysik@gmail.com>
 
-If you use the ideas from `Multi-rtl` to implement a similar multi-channel receiver yourself, please add a reference to `Multi-rtl` and the `Multi-rtl`'s author.
+If you use the ideas from `Multi-RTL` to implement a similar multi-channel receiver yourself, please add a reference to `Multi-RTL` and the `Multi-RTL`'s author.
