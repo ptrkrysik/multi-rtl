@@ -8,7 +8,7 @@ Mailing list
 ============
 Current Multi-RTL project's mailing list address is following:
 
-Multi-RTL@googlegroups.com
+multi-rtl@googlegroups.com
 
 To join the group with any e-mail addres (google account is not required) use this link:
 
