@@ -21,7 +21,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
 MAIN_TMPL = """\
 <?xml version="1.0"?>
 <block>
-  <name>multi-rtl source</name>
+  <name>Multi-RTL Source</name>
   <key>multi_rtl_source</key>
   <category>Multi_rtl</category>
   <throttle>1</throttle>
