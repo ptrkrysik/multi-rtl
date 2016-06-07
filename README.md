@@ -30,11 +30,11 @@ sudo pybombs install gr-osmosdr
 
 To install `Multi-RTL` first download its source code:
 ```sh
-git clone https://github.com/ptrkrysik/multi_rtl.git
+git clone https://github.com/ptrkrysik/multi-rtl.git
 ```
 ... then compile it and install:
 ```sh
-cd multi_rtl
+cd multi-rtl
 mkdir build
 cd build
 cmake ..
