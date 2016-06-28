@@ -2,7 +2,7 @@
 <block>
   <name>vector_sink_cn</name>
   <key>multi_rtl_vector_sink_cn</key>
-  <category>Multi_rtl</category>
+  <category>Multi-RTL</category>
   <import>import multi_rtl</import>
   <make>multi_rtl.vector_sink_cn($vlen, $finite, $nsamp)</make>
 	<param>

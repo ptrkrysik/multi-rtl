@@ -105,7 +105,7 @@ PARAMS_TMPL = """
     <key>sync_gain$(n)</key>
     <value>10</value>
     <type>real</type>
-    <hide>\#if \$nchan() > $n then 'none' else 'all'#</hide>
+    <hide>\#if \$nchan() > $n then 'part' else 'all'#</hide>
     <tab>Synchronization</tab>
   </param>
   <param>
@@ -114,20 +114,22 @@ PARAMS_TMPL = """
     <value>100e6</value>
     <type>real</type>
     <hide>\#if \$nchan() > $n then 'none' else 'all'#</hide>
+    <tab>RF Options</tab>
   </param>
   <param>
     <name>Ch$(n): RF Gain (dB)</name>
     <key>gain$(n)</key>
     <value>10</value>
     <type>real</type>
-    <hide>\#if \$nchan() > $n then 'none' else 'all'#</hide>
+    <hide>\#if \$nchan() > $n then 'part' else 'all'#</hide>
+    <tab>RF Options</tab>
   </param>
   <param>
     <name>Ch$(n): Gain Mode</name>
     <key>gain_mode$(n)</key>
     <value>False</value>
     <type>bool</type>
-    <hide>\#if \$nchan() > $n then 'none' else 'all'#</hide>
+    <hide>\#if \$nchan() > $n then 'part' else 'all'#</hide>
     <option>
       <name>Manual</name>
       <key>False</key>
@@ -136,13 +138,14 @@ PARAMS_TMPL = """
       <name>Automatic</name>
       <key>True</key>
     </option>
+    <tab>RF Options</tab>
   </param>
   <param>
     <name>Ch$(n): ID string</name>
     <key>id_string$(n)</key>
     <value>"$(n)"</value>
     <type>string</type>
-    <hide>\#if \$nchan() > $n then 'none' else 'all'#</hide>
+    <hide>\#if \$nchan() > $n then 'part' else 'all'#</hide>
   </param>
 """
 
