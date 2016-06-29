@@ -23,7 +23,7 @@ MAIN_TMPL = """\
 <block>
   <name>Multi-RTL Source</name>
   <key>multi_rtl_source</key>
-  <category>Multi_rtl</category>
+  <category>Multi-RTL</category>
   <throttle>1</throttle>
   <import>import multi_rtl</import>
   <make>multi_rtl.multi_rtl_source(sample_rate=\$sample_rate, num_channels=\$nchan, ppm=\$corr, sync_center_freq=\$sync_freq, rtlsdr_id_strings= [ 
