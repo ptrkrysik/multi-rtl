@@ -102,7 +102,7 @@ One of the examples of use of the `mutlirtl_rx_to_cfile_2chan.py` is to record d
 
 How it works
 ==================
-For details how `Multi-RTL` works and what is its original contribution to previous efforts to make multi-channel receiver, read the author's [github page](ptrkrysik.github.io).
+For details how `Multi-RTL` works and what is its original contribution to previous efforts to make multi-channel receiver, read the author's [github page](https://ptrkrysik.github.io/).
 
 TODO
 ====
