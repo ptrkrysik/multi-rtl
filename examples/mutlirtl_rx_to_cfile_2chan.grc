@@ -696,7 +696,7 @@
     </param>
     <param>
       <key>sync_gain0</key>
-      <value>25</value>
+      <value>sync_gain_ch0</value>
     </param>
     <param>
       <key>freq10</key>
@@ -916,7 +916,7 @@
     </param>
     <param>
       <key>sync_gain1</key>
-      <value>25</value>
+      <value>sync_gain_ch1</value>
     </param>
     <param>
       <key>freq20</key>
@@ -1336,7 +1336,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(16, 272)</value>
+      <value>(16, 320)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -1364,7 +1364,7 @@
     </param>
     <param>
       <key>sync_freq</key>
-      <value>939.4e6</value>
+      <value>sync_freq</value>
     </param>
   </block>
   <block>
