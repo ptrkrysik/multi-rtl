@@ -55,7 +55,7 @@ You can also set identifiers dongles so it will be possible to distinguish chann
 ```sh
 rtl_eeprom -d <device_index> -s <serial_number>
 ```
-If you connect dongles one by one (so only one is connected at a time) `device_index` is 0. `serial_number` is a unique number that you assign to your dongle acting as a channel. In the rest of the README it will be assumed that consecutive numbers of the following form are used as numbers of channels: `00000001, 00000002, 00000003, ...`.
+If you connect dongles one by one (so only one is connected at a time) `device_index` is 0. `serial_number` is an unique number that you assign to your dongle acting as a channel. In the rest of the README it will be assumed that consecutive numbers of the following form are used as numbers of channels: `00000001, 00000002, 00000003, ...`.
 
 Usage
 ==================
