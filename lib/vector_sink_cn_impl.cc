@@ -87,41 +87,43 @@ namespace gr {
         
       int ch;
 
-      if(d_finite && (d_samp_counter < d_nsamp)){
-        bool full=false;
-        int samples_to_copy=0;
-        if((noutput_items+d_samp_counter) >= d_nsamp){
-          int samples_to_copy = d_nsamp-d_samp_counter;
-          d_samp_counter=d_samp_counter+samples_to_copy;
-          full = true;
-        } else {
-          samples_to_copy = noutput_items;
-          d_samp_counter = d_samp_counter+noutput_items;
-        }
+      if(d_finite) {
+        if(d_samp_counter < d_nsamp){
+          bool full=false;
+          int samples_to_copy=0;
+          if((noutput_items+d_samp_counter) >= d_nsamp){
+            int samples_to_copy = d_nsamp-d_samp_counter;
+            d_samp_counter=d_samp_counter+samples_to_copy;
+            full = true;
+          } else {
+            samples_to_copy = noutput_items;
+            d_samp_counter = d_samp_counter+noutput_items;
+          }
+                
+          for(ch=0; ch<d_num_channels; ch++){
+              for(int i = 0; (i < samples_to_copy * d_vlen); i++){
+                d_data[ch].push_back (((gr_complex*)input_items[ch])[i]);
+              }              
               
-        for(ch=0; ch<d_num_channels; ch++){
-            for(int i = 0; (i < samples_to_copy * d_vlen); i++){
-              d_data[ch].push_back (((gr_complex*)input_items[ch])[i]);
-            }              
-            
-              std::vector<tag_t> tags;
-              get_tags_in_range(tags, ch, nitems_read(ch), nitems_read(ch) + noutput_items);
-              d_tags.insert(d_tags.end(), tags.begin(), tags.end());
-        }
-        if(full){
-            if(d_fullness_norifier!=NULL){
-                d_fullness_norifier->calleval();
-            }
-        }
-      } else {
-        for(ch=0; ch<d_num_channels; ch++){
-            for(int i = 0; (i < noutput_items * d_vlen); i++){
-              d_data[ch].push_back (((gr_complex*)input_items[ch])[i]);
-            }              
-            
                 std::vector<tag_t> tags;
                 get_tags_in_range(tags, ch, nitems_read(ch), nitems_read(ch) + noutput_items);
                 d_tags.insert(d_tags.end(), tags.begin(), tags.end());
+          }
+          if(full){
+              if(d_fullness_norifier!=NULL){
+                  d_fullness_norifier->calleval();
+              }
+          }
+        }
+      } else {
+        for(ch=0; ch<d_num_channels; ch++){
+          for(int i = 0; (i < noutput_items * d_vlen); i++){
+            d_data[ch].push_back (((gr_complex*)input_items[ch])[i]);
+          }              
+          
+              std::vector<tag_t> tags;
+              get_tags_in_range(tags, ch, nitems_read(ch), nitems_read(ch) + noutput_items);
+              d_tags.insert(d_tags.end(), tags.begin(), tags.end());
         }
       }
       
