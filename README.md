@@ -23,11 +23,6 @@ On Debian based systems to install programs required by `Multi-RTL` use followin
 sudo apt-get install gr-osmosdr gnuradio-dev cmake swig build-essential doxygen python-scipy
 ```
 
-You can also use [PyBombs](https://github.com/gnuradio/pybombs) to install `Multi-RTL`'s prerequisites. Installation of PyBombs itself is described in [here](https://github.com/gnuradio/pybombs#installation). After installing it execute:
-```sh
-sudo pybombs install gr-osmosdr
-```
-
 To install `Multi-RTL` first download its source code:
 ```sh
 git clone https://github.com/ptrkrysik/multi-rtl.git
@@ -41,6 +36,16 @@ cmake ..
 sudo make install
 sudo ldconfig
 ```
+
+You can also use [PyBombs](https://github.com/gnuradio/pybombs) to install `Multi-RTL`. Installation of PyBombs itself is described in [here](https://github.com/gnuradio/pybombs#installation). After installing it execute:
+```sh
+pybombs install multi-rtl
+```
+In case of installing in a directory where writing requires root privileges (like ```/usr/local```) use version of the command with sudo in front of it:
+```sh
+sudo pybombs install multi-rtl
+```
+
 
 Preparation of RTL-SDR receivers
 ================================
