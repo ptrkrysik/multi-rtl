@@ -24,11 +24,7 @@ description here (python/__init__.py).
 '''
 
 # import swig generated symbols into the multi_rtl namespace
-try:
-	# this might fail if the module is python-only
-	from multi_rtl_swig import *
-except ImportError:
-	pass
+from multi_rtl_swig import *
 
 # import any pure python here
 from multi_rtl_source import multi_rtl_source
