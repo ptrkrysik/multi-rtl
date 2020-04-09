@@ -56,6 +56,7 @@ set(Boost_ADDITIONAL_VERSIONS
     "1.55.0" "1.55" "1.56.0" "1.56" "1.57.0" "1.57" "1.58.0" "1.58" "1.59.0" "1.59"
     "1.60.0" "1.60" "1.61.0" "1.61" "1.62.0" "1.62" "1.63.0" "1.63" "1.64.0" "1.64"
     "1.65.0" "1.65" "1.66.0" "1.66" "1.67.0" "1.67" "1.68.0" "1.68" "1.69.0" "1.69"
+    "1.70.0" "1.70" "1.71.0" "1.71" "1.72.0" "1.72"
 )
 find_package(Boost "1.35" COMPONENTS filesystem system)
 
@@ -107,14 +108,16 @@ endif(APPLE)
 # components required to the list of GR_REQUIRED_COMPONENTS (in all
 # caps such as FILTER or FFT) and change the version to the minimum
 # API compatible version required.
-set(GR_REQUIRED_COMPONENTS RUNTIME)
-find_package(Gnuradio)
+
+find_package(Gnuradio "3.8" REQUIRED)
+
 find_package(CppUnit)
 find_package(Doxygen)
 
-if(NOT GNURADIO_RUNTIME_FOUND)
-    message(FATAL_ERROR "GnuRadio Runtime required to compile gr-gsm")
+if(NOT Gnuradio_FOUND)
+    message(FATAL_ERROR "Gnuradio required to compile gr-gsm")
 endif()
+
 if(NOT CPPUNIT_FOUND)
     message(FATAL_ERROR "CppUnit required to compile multi_rtl")
 endif()

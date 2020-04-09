@@ -1,0 +1,32 @@
+id: multi_rtl_vector_sink_cn
+label: vector_sink_cn
+flags: [ python ]
+
+parameters:
+-   id: vlen
+    label: Vec Length
+    dtype: int
+    default: 1
+-   id: finite
+    label: Finite
+    dtype: bool
+    default: False
+-   id: nsamp
+    label: Length
+    dtype: int
+    default: 0
+
+inputs:
+-   domain: stream
+    label: in
+    dtype: complex
+    vlen: ${vlen}
+
+asserts:
+- ${ vlen > 0 }
+
+templates:
+    imports: import multi_rtl
+    make: multi_rtl.vector_sink_cn(${vlen}, ${finite}, ${nsamp})
+
+file_format: 1

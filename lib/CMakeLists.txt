@@ -34,7 +34,7 @@ if(NOT multi_rtl_sources)
 endif(NOT multi_rtl_sources)
 
 add_library(multi_rtl SHARED ${multi_rtl_sources})
-target_link_libraries(multi_rtl ${Boost_LIBRARIES} ${GNURADIO_ALL_LIBRARIES})
+target_link_libraries(multi_rtl ${Boost_LIBRARIES} gnuradio::gnuradio-runtime)
 set_target_properties(multi_rtl PROPERTIES DEFINE_SYMBOL "multi_rtl_EXPORTS")
 
 if(APPLE)
@@ -68,7 +68,7 @@ add_executable(test-multi_rtl ${test_multi_rtl_sources})
 
 target_link_libraries(
   test-multi_rtl
-  ${GNURADIO_RUNTIME_LIBRARIES}
+  gnuradio::gnuradio-runtime
   ${Boost_LIBRARIES}
   ${CPPUNIT_LIBRARIES}
   multi_rtl
