@@ -21,9 +21,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
 template_main = """\
 id: multi_rtl_source
 label: Multi-RTL Source
-flags: |-
-   throttle
-   [ python ]
+flags: [ throttle, python ]
 
 paramters:
 -   id: sample_rate
@@ -104,57 +102,57 @@ template_p = """\
     category: Synchronization
     dtype: real
     default: 10
-    hide: &
-    ${"%"} if nchan() > n:
-part
-    ${"%"} else:
-all
-    ${"%"} endif
+    hide: |-
+        ${"%"} if nchan() > n:
+        part
+        ${"%"} else:
+        all
+        ${"%"} endif
 -   id: freq${n}
-    label: Ch${n}: Frequency (Hz)
+    label: "Ch${n}: Frequency (Hz)"
     category: RF Options
     dtype: real
     default: 100e6
-    hide: &
-    ${"%"} if nchan() > n:
-none
-    ${"%"} else:
-all
-    ${"%"} endif
+    hide: |-
+        ${"%"} if nchan() > n:
+        none
+        ${"%"} else:
+        all
+        ${"%"} endif
 -   id: gain${n}
-    label: Ch${n}: RF Gain (dB)
+    label: "Ch${n}: RF Gain (dB)"
     category: RF Options
     dtype: real
     default: 10
-    hide: &
-    ${"%"} if nchan() > n:
-part
-    ${"%"} else:
-all
-    ${"%"} endif
+    hide: |-
+        ${"%"} if nchan() > n:
+        part
+        ${"%"} else:
+        all
+        ${"%"} endif
 -   id: gain_mode${n}
-    label: Ch${n}: Gain Mode
+    label: "Ch${n}: Gain Mode"
     category: RF Options
     dtype: bool
     default: False
-    hide: &
-    ${"%"} if nchan() > n:
-part
-    ${"%"} else:
-all
-    ${"%"} endif
+    hide: |-
+        ${"%"} if nchan() > n:
+        part
+        ${"%"} else:
+        all
+        ${"%"} endif
     options: [ False, True ]
     option_labels: [ Manual, Automatic ]
 -   id: id_string${n}
-    label: Ch${n}: ID string
+    label: "Ch${n}: ID string"
     dtype: string
     default: "${n}"
-    hide: &
-    ${"%"} if nchan() > n:
-part
-    ${"%"} else:
-all
-    ${"%"} endif
+    hide: |-
+        ${"%"} if nchan() > n:
+        part
+        ${"%"} else:
+        all
+        ${"%"} endif
 """
 
 max_num_mboards = 8
@@ -173,6 +171,5 @@ if __name__ == '__main__':
       else: raise(Exception, 'file %s has wrong syntax!'%tail)
 
       params = ''.join([Template(template_p).render( n = n ) for n in range(max_num_channels)])
-      params = params.replace('&', '\\\\');
 
       open(file, 'w').write( Template(template_main).render( max_nchan = max_num_channels, params = params ))
