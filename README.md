@@ -23,6 +23,27 @@ On Debian based systems to install programs required by `Multi-RTL` use followin
 sudo apt-get install gr-osmosdr gnuradio-dev cmake swig build-essential doxygen python-scipy
 ```
 
+On Arch based systems to install programs required by `Multi-RTL` use following command:
+```sh
+pacman -S gnuradio-osmosdr cmake swig doxygen python-scipy
+```
+
+Note that `gr-osmosdr` also requires `libosmo-dsp` and `gr-iqbal`.
+
+On Debian based systems to install programs and libraries required by `gr-osmosdr` first install `libosmo-dsp` manually from source and then `gr-iqbal` using following command:
+```sh
+sudo apt-get install gr-iqbal
+```
+
+On Arch based systems to install programs and libraries required by `gr-osmosdr` first install `libosmo-dsp` from AUR, manually or using yaourt:
+```sh
+yaourt -S libosmo-dsp
+```
+... then install `gr-iqbal` using following command:
+```sh
+pacman -S gnuradio-iqbal
+```
+
 To install `Multi-RTL` first download its source code:
 ```sh
 git clone https://github.com/ptrkrysik/multi-rtl.git
@@ -118,3 +139,9 @@ Author
 Piotr Krysik <ptrkrysik@gmail.com>
 
 If you use the ideas from `Multi-RTL` to implement a similar multi-channel receiver yourself, please add a reference to `Multi-RTL` and the `Multi-RTL`'s author.
+
+Contributor
+==================
+Antoni Przybylik <antoni.przybylik@wp.pl>
+
+If you use the ideas from `Multi-RTL` to implement a similar multi-channel receiver yourself, please add a reference to `Multi-RTL` and the `Multi-RTL`'s contributor.
