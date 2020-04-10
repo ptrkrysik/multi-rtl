@@ -18,7 +18,7 @@ Installation
 ==================
 To install `Multi-RTL` installation of gnuradio-dev, gr-osmosdr and python-scipy is required. Tools typically used for building `GNU Radio` - cmake, swig and g++ - are also needed.
 
-..* ### **Note that `gr-osmosdr` also requires `libosmo-dsp` and `gr-iqbal`**
+* ### **Note that `gr-osmosdr` also requires `libosmo-dsp` and `gr-iqbal`**
 
 **Debian based systems**
 
