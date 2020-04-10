@@ -18,22 +18,27 @@ Installation
 ==================
 To install `Multi-RTL` installation of gnuradio-dev, gr-osmosdr and python-scipy is required. Tools typically used for building `GNU Radio` - cmake, swig and g++ - are also needed.
 
+
 On Debian based systems to install programs required by `Multi-RTL` use following command:
 ```sh
 sudo apt-get install gr-osmosdr gnuradio-dev cmake swig build-essential doxygen python-scipy
 ```
+
 
 On Arch based systems to install programs required by `Multi-RTL` use following command:
 ```sh
 pacman -S gnuradio-osmosdr cmake swig doxygen python-scipy
 ```
 
-Note that `gr-osmosdr` also requires `libosmo-dsp` and `gr-iqbal`.
+
+** Note that `gr-osmosdr` also requires `libosmo-dsp` and `gr-iqbal`.**
+
 
 On Debian based systems to install programs and libraries required by `gr-osmosdr` first install `libosmo-dsp` manually from source and then `gr-iqbal` using following command:
 ```sh
 sudo apt-get install gr-iqbal
 ```
+
 
 On Arch based systems to install programs and libraries required by `gr-osmosdr` first install `libosmo-dsp` from AUR, manually or using yaourt:
 ```sh
@@ -43,6 +48,7 @@ yaourt -S libosmo-dsp
 ```sh
 pacman -S gnuradio-iqbal
 ```
+
 
 To install `Multi-RTL` first download its source code:
 ```sh
