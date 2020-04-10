@@ -18,28 +18,15 @@ Installation
 ==================
 To install `Multi-RTL` installation of gnuradio-dev, gr-osmosdr and python-scipy is required. Tools typically used for building `GNU Radio` - cmake, swig and g++ - are also needed.
 
+#### **Note that `gr-osmosdr` also requires `libosmo-dsp` and `gr-iqbal`**
 
-On Debian based systems to install programs required by `Multi-RTL` use following command:
-```sh
-sudo apt-get install gr-osmosdr gnuradio-dev cmake swig build-essential doxygen python-scipy
-```
-
-
-On Arch based systems to install programs required by `Multi-RTL` use following command:
-```sh
-pacman -S gnuradio-osmosdr cmake swig doxygen python-scipy
-```
-
-
-** Note that `gr-osmosdr` also requires `libosmo-dsp` and `gr-iqbal`.**
-
-
+**Debian based systems**
 On Debian based systems to install programs and libraries required by `gr-osmosdr` first install `libosmo-dsp` manually from source and then `gr-iqbal` using following command:
 ```sh
 sudo apt-get install gr-iqbal
 ```
 
-
+**Arch based systems**
 On Arch based systems to install programs and libraries required by `gr-osmosdr` first install `libosmo-dsp` from AUR, manually or using yaourt:
 ```sh
 yaourt -S libosmo-dsp
@@ -49,6 +36,21 @@ yaourt -S libosmo-dsp
 pacman -S gnuradio-iqbal
 ```
 
+#### **Install dependencies**
+
+**Debian based systems**
+On Debian based systems to install programs required by `Multi-RTL` use following command:
+```sh
+sudo apt-get install gr-osmosdr gnuradio-dev cmake swig build-essential doxygen python-scipy
+```
+
+**Arch based systems**
+On Arch based systems to install programs required by `Multi-RTL` use following command:
+```sh
+pacman -S gnuradio-osmosdr cmake swig doxygen python-scipy
+```
+
+#### **Multi-RTL installation**
 
 To install `Multi-RTL` first download its source code:
 ```sh
@@ -63,6 +65,8 @@ cmake ..
 sudo make install
 sudo ldconfig
 ```
+
+#### **Alternative way**
 
 You can also use [PyBombs](https://github.com/gnuradio/pybombs) to install `Multi-RTL`. Installation of PyBombs itself is described in [here](https://github.com/gnuradio/pybombs#installation). After installing it execute:
 ```sh
