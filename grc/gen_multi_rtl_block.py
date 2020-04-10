@@ -60,8 +60,8 @@ outputs:
     multiplicity: ${"$"}{nchan}
 
 asserts:
--   ${max_nchan} >= ${"$"}{nchan}
--   ${"$"}{nchan} > 0
+-   ${"$"}{${max_nchan} >= nchan}
+-   ${"$"}{nchan > 0}
 
 templates:
     imports: import multi_rtl
