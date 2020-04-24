@@ -36,11 +36,11 @@ if(PYTHON_EXECUTABLE)
 else(PYTHON_EXECUTABLE)
 
     #use the built-in find script
-    find_package(PythonInterp 2)
+    find_package(PythonInterp 3)
 
     #and if that fails use the find program routine
     if(NOT PYTHONINTERP_FOUND)
-        find_program(PYTHON_EXECUTABLE NAMES python python2 python2.7 python2.6 python2.5)
+        find_program(PYTHON_EXECUTABLE NAMES python python3 python3.8 python3.7)
         if(PYTHON_EXECUTABLE)
             set(PYTHONINTERP_FOUND TRUE)
         endif(PYTHON_EXECUTABLE)
@@ -57,18 +57,6 @@ endif(CMAKE_CROSSCOMPILING)
 #make the path to the executable appear in the cmake gui
 set(PYTHON_EXECUTABLE ${PYTHON_EXECUTABLE} CACHE FILEPATH "python interpreter")
 set(QA_PYTHON_EXECUTABLE ${QA_PYTHON_EXECUTABLE} CACHE FILEPATH "python interpreter for QA tests")
-
-#make sure we can use -B with python (introduced in 2.6)
-if(PYTHON_EXECUTABLE)
-    execute_process(
-        COMMAND ${PYTHON_EXECUTABLE} -B -c ""
-        OUTPUT_QUIET ERROR_QUIET
-        RESULT_VARIABLE PYTHON_HAS_DASH_B_RESULT
-    )
-    if(PYTHON_HAS_DASH_B_RESULT EQUAL 0)
-        set(PYTHON_DASH_B "-B")
-    endif()
-endif(PYTHON_EXECUTABLE)
 
 ########################################################################
 # Check for the existence of a python module:
