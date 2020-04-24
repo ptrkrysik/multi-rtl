@@ -1,3 +1,5 @@
+#zmienilem make |- na make |
+
 """
 Copyright 2012 Free Software Foundation, Inc.
 
@@ -23,7 +25,7 @@ id: multi_rtl_source
 label: Multi-RTL Source
 flags: [ throttle, python ]
 
-paramters:
+parameters:
 -   id: sample_rate
     label: Sample Rate (sps)
     dtype: real
@@ -65,7 +67,7 @@ asserts:
 
 templates:
     imports: import multi_rtl
-    make: |-
+    make: |
         multi_rtl.multi_rtl_source(sample_rate=${"$"}{sample_rate}, num_channels=${"$"}{nchan}, ppm=${"$"}{corr}, sync_center_freq=${"$"}{sync_freq}, rtlsdr_id_strings= [ \\
     % for n in range(max_nchan - 1):
 ${"$"}{id_string${n}}, \\
@@ -102,57 +104,32 @@ template_p = """\
     category: Synchronization
     dtype: real
     default: 10
-    hide: |-
-        ${"%"} if nchan() > n:
-        part
-        ${"%"} else:
-        all
-        ${"%"} endif
+    hide: ${"$"}{ 'part' if nchan() > n else 'all' }
 -   id: freq${n}
     label: "Ch${n}: Frequency (Hz)"
     category: RF Options
     dtype: real
     default: 100e6
-    hide: |-
-        ${"%"} if nchan() > n:
-        none
-        ${"%"} else:
-        all
-        ${"%"} endif
+    hide: ${"$"}{ 'none' if nchan() > n else 'all' }
 -   id: gain${n}
     label: "Ch${n}: RF Gain (dB)"
     category: RF Options
     dtype: real
     default: 10
-    hide: |-
-        ${"%"} if nchan() > n:
-        part
-        ${"%"} else:
-        all
-        ${"%"} endif
+    hide: ${"$"}{ 'part' if nchan() > n else 'all' }
 -   id: gain_mode${n}
     label: "Ch${n}: Gain Mode"
     category: RF Options
     dtype: bool
     default: False
-    hide: |-
-        ${"%"} if nchan() > n:
-        part
-        ${"%"} else:
-        all
-        ${"%"} endif
+    hide: ${"$"}{ 'part' if nchan() > n else 'all' }
     options: [ False, True ]
     option_labels: [ Manual, Automatic ]
 -   id: id_string${n}
     label: "Ch${n}: ID string"
     dtype: string
     default: "${n}"
-    hide: |-
-        ${"%"} if nchan() > n:
-        part
-        ${"%"} else:
-        all
-        ${"%"} endif
+    hide: ${"$"}{ 'part' if nchan() > n else 'all' }
 """
 
 max_num_mboards = 8
