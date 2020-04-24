@@ -102,32 +102,32 @@ template_p = """\
     category: Synchronization
     dtype: real
     default: 10
-    hide: ${"$"}{ 'part' if nchan() > ${n} else 'all' }
+    hide: ${"$"}{ 'part' if nchan > ${n} else 'all' }
 -   id: freq${n}
     label: "Ch${n}: Frequency (Hz)"
     category: RF Options
     dtype: real
     default: 100e6
-    hide: ${"$"}{ 'none' if nchan() > ${n} else 'all' }
+    hide: ${"$"}{ 'none' if nchan > ${n} else 'all' }
 -   id: gain${n}
     label: "Ch${n}: RF Gain (dB)"
     category: RF Options
     dtype: real
     default: 10
-    hide: ${"$"}{ 'part' if nchan() > ${n} else 'all' }
+    hide: ${"$"}{ 'part' if nchan > ${n} else 'all' }
 -   id: gain_mode${n}
     label: "Ch${n}: Gain Mode"
     category: RF Options
     dtype: bool
     default: False
-    hide: ${"$"}{ 'part' if nchan() > ${n} else 'all' }
+    hide: ${"$"}{ 'part' if nchan > ${n} else 'all' }
     options: [ False, True ]
     option_labels: [ Manual, Automatic ]
 -   id: id_string${n}
     label: "Ch${n}: ID string"
     dtype: string
     default: "${n}"
-    hide: ${"$"}{ 'part' if nchan() > ${n} else 'all' }
+    hide: ${"$"}{ 'part' if nchan > ${n} else 'all' }
 """
 
 max_num_mboards = 8
