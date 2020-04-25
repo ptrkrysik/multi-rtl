@@ -51,6 +51,7 @@ ${max_nchan} ]
 ${n}, \\
     % endfor
 ${max_nchan} ]
+    hide: part
 ${params}
 
 outputs:

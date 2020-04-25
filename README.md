@@ -151,6 +151,7 @@ Adding automatic resynchronization on overflows. To implement this feature infor
 Authors
 ==================
 Piotr Krysik <ptrkrysik@gmail.com> (main author)
+
 Antoni Przybylik <antoni.przybylik@wp.pl> (GNU Radio 3.8 porting)
 
 If you use the ideas from `Multi-RTL` to implement a similar multi-channel receiver yourself, please add a reference to `Multi-RTL` and the `Multi-RTL`'s authors.
