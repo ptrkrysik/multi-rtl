@@ -27,6 +27,6 @@ description here (python/__init__.py).
 from multi_rtl_swig import *
 
 # import any pure python here
-from .multi_rtl_source import multi_rtl_source
+from multi_rtl_source import multi_rtl_source
 
 #

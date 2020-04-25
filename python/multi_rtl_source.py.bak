@@ -68,8 +68,8 @@ class vector_sink_fullness_notifier(gr.feval):
         self.d_mutex.acquire()
         try:
             self.b.fullness_report()
-        except Exception as e:
-            print("Vector sink fullness notification exception: ", e)
+        except Exception, e:
+            print "Vector sink fullness notification exception: ", e
         finally:
             self.d_mutex.release()
 
@@ -126,7 +126,7 @@ class multi_rtl_source(gr.hier_block2):
         self.vsink_notifier = vector_sink_fullness_notifier(self) #object providing callback function for notifying the multi_rtl that 
                                                                   #vsinks are full
 
-        for chan in range(0,self.num_channels):
+        for chan in xrange(0,self.num_channels):
             if (chan <= len(rtlsdr_id_strings)) and (rtlsdr_id_strings is not ""):
                 rtl_args= "numchan=" + str(1) + " " + "rtl=" + rtlsdr_id_strings[chan]
                 self.rtlsdr_sources[chan] = osmosdr.source( args=rtl_args) 
@@ -148,7 +148,7 @@ class multi_rtl_source(gr.hier_block2):
 
         self.vsink = multi_rtl.vector_sink_cn(1, True, int(self.sync_samples), int(num_channels), self.vsink_notifier)
              
-        for chan in range(0,self.num_channels):          
+        for chan in xrange(0,self.num_channels):          
             self.delay_blocks[chan] = blocks.delay(gr.sizeof_gr_complex*1, 0)
             self.phase_amplitude_corrections[chan]=1.0
             self.phase_and_amplitude_correctors[chan] = blocks.multiply_const_vcc((self.phase_amplitude_corrections[chan], ))
@@ -176,7 +176,7 @@ class multi_rtl_source(gr.hier_block2):
         
         self.phase_amplitude_corrections[0]=1
         var0=var(sync_data[0])
-        for chan in range(1,self.num_channels):
+        for chan in xrange(1,self.num_channels):
             result_corr       = xcorr(sync_data[0],sync_data[chan],int(len(sync_data[0])/2))
             max_position      = argmax(abs(result_corr))
             self.delays[chan] = len(result_corr)/2-max_position
@@ -185,8 +185,8 @@ class multi_rtl_source(gr.hier_block2):
             self.phase_and_amplitude_correctors[chan].set_k((sqrt(var0/var(sync_data[chan]))*(exp(1j*angle(self.phase_amplitude_corrections[chan]))),))
 #            print "sqrt(var0/var(sync_data[chan])): ",sqrt(var0/var(sync_data[chan]))
         #set delays
-        for chan in range(0,self.num_channels):        
-            print("Delay of channel ",chan,": ",self.delays[chan],' phase diff: ', (angle(self.phase_amplitude_corrections[chan])/pi*180), " [deg]")
+        for chan in xrange(0,self.num_channels):        
+            print "Delay of channel ",chan,": ",self.delays[chan],' phase diff: ', (angle(self.phase_amplitude_corrections[chan])/pi*180), " [deg]"
             self.delay_blocks[chan].set_dly(-int(self.delays[chan]))
         
         self.state = "work"
@@ -202,7 +202,7 @@ class multi_rtl_source(gr.hier_block2):
             self.vsink.reset()
     
     def apply_synchronization_settings(self):
-        for chan in range(0,self.num_channels):
+        for chan in xrange(0,self.num_channels):
             self.rtlsdr_sources[chan].set_center_freq(self.sync_center_freq, 0)
             if(len(self.sync_gains) == self.num_channels):
                 self.rtlsdr_sources[chan].set_gain(self.sync_gains[chan], 0)
@@ -211,7 +211,7 @@ class multi_rtl_source(gr.hier_block2):
                                                           #TODO: decide if this is good
                 
     def apply_operational_settings(self):
-        for chan in range(0,self.num_channels):
+        for chan in xrange(0,self.num_channels):
             self.rtlsdr_sources[chan].set_gain(self.gains[chan], 0)    
             self.rtlsdr_sources[chan].set_center_freq(self.center_freqs[chan], 0)
 
@@ -231,7 +231,7 @@ class multi_rtl_source(gr.hier_block2):
     
     def set_center_freq(self, freq, chan=0): #b. istotna
         self.center_freqs[chan] = freq
-        print("setting center freq",freq)
+        print "setting center freq",freq
         if self.state == "work":
             self.rtlsdr_sources[chan].set_center_freq(freq, 0)
 
@@ -240,8 +240,8 @@ class multi_rtl_source(gr.hier_block2):
         
     def set_freq_corr(self, ppm):  #b. istotna
         self.ppm = ppm
-        print("setting freq corr",ppm)
-        for chan in range(0,self.num_channels):
+        print "setting freq corr",ppm
+        for chan in xrange(0,self.num_channels):
             self.rtlsdr_sources[chan].set_freq_corr(self.ppm, 0)
         
     def get_freq_corr(self):    #b. istotna
