@@ -100,7 +100,7 @@ If you connect dongles one by one (so only one is connected at a time) `device_i
 Usage
 ==================
 Multi-RTL is a GNU Radio block. The most natural way to use it is to build a flowgraph in `gnuradio-companion` (the GNU Radio's GUI tool).
-`Multi-RTL` viewed in `gnuradio-companion` has options grouped into two cathegories:
+`Multi-RTL` viewed in `gnuradio-companion` has options grouped into two categories:
 * `General` options - that are used during normal operation of the receiver:
     * `Freq. Corr. (ppm)` - reference clock offset frequency correction in points per milion (ppm),
     * `Num Channels` - number of channels of the reciver,
@@ -122,7 +122,7 @@ Synchronization is performend when `Multi-RTL` is started and when user manually
 * FM radio (87.5 to 108.0MHz) `caution:` auto-correlation function of FM radio varry a lot in time as it is dependend on the signal that is transmitted - noisy music results with signal that has much better auto-correlation than speech or silence.
 
 In `Multi-RTL`'s repository there is an example of `gnuradio-companion` application ([multi-rtl/examples/mutlirtl_rx_to_cfile_2chan.grc](examples/mutlirtl_rx_to_cfile_2chan.grc)) that uses two channel `Multi-RTL` receiver and stores the captured samples to files. The flowgraph of the application is presented below:
-![Sample two channel application using Multi-RTL](https://raw.githubusercontent.com/ptrkrysik/ptrkrysik.github.io/master/images/multi_rx_to_cfile_2chan.png)
+![Sample two channel application using Multi-RTL](https://user-images.githubusercontent.com/52050799/80285280-43369380-8713-11ea-9f41-71ea1cac5aad.png)
 
  The result of transformation to Python file with use of `gnuradio-companion` is stored here [multi-rtl/examples/mutlirtl_rx_to_cfile_2chan.py](examples/mutlirtl_rx_to_cfile_2chan.py). It can be used from commandline and in shell scripts. To see it's commandline parameters go into `multi-rtl/examples` directory and call:
 ```sh
