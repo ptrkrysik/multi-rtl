@@ -1,6 +1,6 @@
 Multi-RTL
 ==================
-`Multi-RTL` is a GNU Radio block that transforms cheap multiple `RTL-SDR` receivers into multi-channel receiver. 
+`Multi-RTL` is a GNU Radio block that transforms cheap multiple `RTL-SDR` receivers into multi-channel receiver.
 
 `Multi-RTL` is the first software solution that enables synchronous reception with each channel based on a `RTL-SDR` receiver tuned to a different central frequency. The synchronization is done automatically and in software - without the need for any additional electronical hardware.
 
@@ -16,12 +16,45 @@ https://groups.google.com/forum/#!forum/multi-rtl/join
 
 Installation
 ==================
-To install `Multi-RTL` installation of gnuradio-dev, gr-osmosdr and python-scipy is required. Tools typically used for building `GNU Radio` - cmake, swig and g++ - are also needed.
+To install `Multi-RTL` installation of gnuradio-dev, gr-osmosdr, python-matplotlib and python-scipy is required. Tools typically used for building `GNU Radio` - cmake, swig and g++ - are also needed.
+
+* ### **Note that `gr-osmosdr` also requires `libosmo-dsp` and `gr-iqbal`**
+
+**Debian based systems**
+
+On Debian based systems to install programs and libraries required by `gr-osmosdr` first install `libosmo-dsp` manually from source and then `gr-iqbal` using following command:
+```sh
+sudo apt-get install gr-iqbal
+```
+
+**Arch based systems**
+
+On Arch based systems to install programs and libraries required by `gr-osmosdr` first install `libosmo-dsp` from AUR, manually or using yaourt:
+```sh
+yaourt -S libosmo-dsp
+```
+... then install `gr-iqbal` using following command:
+```sh
+pacman -S gnuradio-iqbal
+```
+
+* ### **Install dependencies**
+
+**Debian based systems**
 
 On Debian based systems to install programs required by `Multi-RTL` use following command:
 ```sh
-sudo apt-get install gr-osmosdr gnuradio-dev cmake swig build-essential doxygen python-scipy
+sudo apt-get install gr-osmosdr gnuradio-dev cmake swig build-essential doxygen python-matplotlib python-scipy
 ```
+
+**Arch based systems**
+
+On Arch based systems to install programs required by `Multi-RTL` use following command:
+```sh
+pacman -S gnuradio-osmosdr cmake swig doxygen python-matplotlib python-scipy
+```
+
+* ### **Multi-RTL installation**
 
 To install `Multi-RTL` first download its source code:
 ```sh
@@ -36,6 +69,8 @@ cmake ..
 sudo make install
 sudo ldconfig
 ```
+
+* ### **Alternative way**
 
 You can also use [PyBombs](https://github.com/gnuradio/pybombs) to install `Multi-RTL`. Installation of PyBombs itself is described in [here](https://github.com/gnuradio/pybombs#installation). After installing it execute:
 ```sh
@@ -64,8 +99,8 @@ If you connect dongles one by one (so only one is connected at a time) `device_i
 
 Usage
 ==================
-Multi-RTL is a GNU Radio block. The most natural way to use it is to build a flowgraph in `gnuradio-companion` (the GNU Radio's GUI tool). 
-`Multi-RTL` viewed in `gnuradio-companion` has options grouped into two cathegories:
+Multi-RTL is a GNU Radio block. The most natural way to use it is to build a flowgraph in `gnuradio-companion` (the GNU Radio's GUI tool).
+`Multi-RTL` viewed in `gnuradio-companion` has options grouped into two categories:
 * `General` options - that are used during normal operation of the receiver:
     * `Freq. Corr. (ppm)` - reference clock offset frequency correction in points per milion (ppm),
     * `Num Channels` - number of channels of the reciver,
@@ -77,7 +112,7 @@ Multi-RTL is a GNU Radio block. The most natural way to use it is to build a flo
     * `Sync Frequency (Hz)` - carrier frequency of the signal that is used for synchronization,
     * `Chn: Sync RF Gain (dB)` - gain of the `n`-th channel during synchronization in dB.
 
-The `General` options are similar to [`osmocom source`](http://sdr.osmocom.org/trac/wiki/GrOsmoSDR) block. The reason is that `Multi-RTL` is hierarhical block that under the hood uses as many `osmocom source` blocks as there are channels in the receiver and passes some of the options directly to them. In comparison with `osmocom source` `Multi-RTL` doesn't include some options that don't apply to RTL-SDR receivers, like: turning on/off automatic dc offset removal, regulation of baseband gain, automatic IQ imbalance correction. 
+The `General` options are similar to [`osmocom source`](http://sdr.osmocom.org/trac/wiki/GrOsmoSDR) block. The reason is that `Multi-RTL` is hierarhical block that under the hood uses as many `osmocom source` blocks as there are channels in the receiver and passes some of the options directly to them. In comparison with `osmocom source` `Multi-RTL` doesn't include some options that don't apply to RTL-SDR receivers, like: turning on/off automatic dc offset removal, regulation of baseband gain, automatic IQ imbalance correction.
 
 Synchronization is performend when `Multi-RTL` is started and when user manually resynchronize the receiver's channels by calling `synchronize` function. During this process receiver's channels are configured according to `Synchronization` options. The `Sync Frequency (Hz)` should point to a carrier frequency of a signal that has good auto-correlation properties (good enough for particular application), with high and narrow peak in the central part. These properties have direct impact on accuracy of the synchronization. Examples of signals that can be used for synchronization are:
 * GSM signal (i.e. GSM900 - 925-960 MHz)
@@ -87,16 +122,16 @@ Synchronization is performend when `Multi-RTL` is started and when user manually
 * FM radio (87.5 to 108.0MHz) `caution:` auto-correlation function of FM radio varry a lot in time as it is dependend on the signal that is transmitted - noisy music results with signal that has much better auto-correlation than speech or silence.
 
 In `Multi-RTL`'s repository there is an example of `gnuradio-companion` application ([multi-rtl/examples/mutlirtl_rx_to_cfile_2chan.grc](examples/mutlirtl_rx_to_cfile_2chan.grc)) that uses two channel `Multi-RTL` receiver and stores the captured samples to files. The flowgraph of the application is presented below:
-![Sample two channel application using Multi-RTL](https://raw.githubusercontent.com/ptrkrysik/ptrkrysik.github.io/master/images/multi_rx_to_cfile_2chan.png)
+![Sample two channel application using Multi-RTL](https://user-images.githubusercontent.com/52050799/80285280-43369380-8713-11ea-9f41-71ea1cac5aad.png)
 
  The result of transformation to Python file with use of `gnuradio-companion` is stored here [multi-rtl/examples/mutlirtl_rx_to_cfile_2chan.py](examples/mutlirtl_rx_to_cfile_2chan.py). It can be used from commandline and in shell scripts. To see it's commandline parameters go into `multi-rtl/examples` directory and call:
 ```sh
 multi-rtl/examples/mutlirtl_rx_to_cfile_2chan.py --help
-``` 
+```
 
 One of the examples of use of the `mutlirtl_rx_to_cfile_2chan.py` is to record downlink and uplink of a given GSM `C0` (BCCH) carrier. It is assumed that id strings of the dongles are 00000001 (`ch0-id-string`) and 00000002 (`ch1-id-string`). Let's also assume that the downlink of the C0 carrier frequency is at 939MHz (`freq-ch0`). Uplink of this radio channel is at 894MHz (`freq-ch1`) as uplink-downlink separation for GSM900 is 45MHz. For synchronization we will use downlink of the `C0` channel (`sync-freq`), because it provides good enough accuracy for this application. As sampling frequency (`samp-rate`) `4*GSM_symbol_rate=4*1625000/6=1083333.3333(...)` will be used. Gains will be set to `30 dB` (`gain-ch0`, `sync-gain-ch0`, `sync-gain-ch1`) but the channel's 1 gain will switch to `10dB` after synchronization (`gain-ch1`). Samples of the signals will be stored to `downlink.cfile` (`fname-ch0`) and `uplink.cfile` (`fname-ch1`). The complete command with all options have the following form:
 ```sh
-./mutlirtl_rx_to_cfile_2chan.py --ch0-id-string="00000001" --ch1-id-string="00000002" \ 
+./mutlirtl_rx_to_cfile_2chan.py --ch0-id-string="00000001" --ch1-id-string="00000002" \
                   --samp-rate 1083333.3333333333 \
                   --sync-freq 939e6 \
                   --sync-gain-ch0 30 --sync-gain-ch1 30 \
@@ -113,8 +148,10 @@ TODO
 ====
 Adding automatic resynchronization on overflows. To implement this feature information on overflows - as tags attached to stream - is required from the `osmocom source`.
 
-Author
+Authors
 ==================
-Piotr Krysik <ptrkrysik@gmail.com>
+Piotr Krysik <ptrkrysik@gmail.com> (main author)
 
-If you use the ideas from `Multi-RTL` to implement a similar multi-channel receiver yourself, please add a reference to `Multi-RTL` and the `Multi-RTL`'s author.
+Antoni Przybylik <antoni.przybylik@wp.pl> (GNU Radio 3.8 porting)
+
+If you use the ideas from `Multi-RTL` to implement a similar multi-channel receiver yourself, please add a reference to `Multi-RTL` and the `Multi-RTL`'s authors.

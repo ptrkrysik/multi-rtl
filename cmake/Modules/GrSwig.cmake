@@ -127,7 +127,7 @@ macro(GR_SWIG_MAKE name)
     endif()
 
     #append additional include directories
-    find_package(PythonLibs 2)
+    find_package(PythonLibs 3)
     list(APPEND GR_SWIG_INCLUDE_DIRS ${PYTHON_INCLUDE_PATH}) #deprecated name (now dirs)
     list(APPEND GR_SWIG_INCLUDE_DIRS ${PYTHON_INCLUDE_DIRS})
 
@@ -160,7 +160,7 @@ macro(GR_SWIG_MAKE name)
     list(APPEND SWIG_MODULE_${name}_EXTRA_DEPS ${tag_file})
 
     #setup the swig flags with flags and include directories
-    set(CMAKE_SWIG_FLAGS -fvirtual -modern -keyword -w511 -module ${name} ${GR_SWIG_FLAGS})
+    set(CMAKE_SWIG_FLAGS -fvirtual -keyword -w511 -module ${name} ${GR_SWIG_FLAGS})
     foreach(dir ${GR_SWIG_INCLUDE_DIRS})
         list(APPEND CMAKE_SWIG_FLAGS "-I${dir}")
     endforeach(dir)

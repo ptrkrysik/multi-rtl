@@ -1,1609 +1,307 @@
-<?xml version='1.0' encoding='utf-8'?>
-<?grc format='1' created='3.7.9'?>
-<flow_graph>
-  <timestamp>Sat May  7 06:32:20 2016</timestamp>
-  <block>
-    <key>options</key>
-    <param>
-      <key>author</key>
-      <value>Piotr Krysik</value>
-    </param>
-    <param>
-      <key>window_size</key>
-      <value></value>
-    </param>
-    <param>
-      <key>category</key>
-      <value>Custom</value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>description</key>
-      <value>Sample application for recording to binary files the samples from inputs of two channel multi-rtl receiver</value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(8, 8)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>generate_options</key>
-      <value>no_gui</value>
-    </param>
-    <param>
-      <key>hier_block_src_path</key>
-      <value>.:</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>mutlirtl_rx_to_cfile_2chan</value>
-    </param>
-    <param>
-      <key>max_nouts</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>qt_qss_theme</key>
-      <value></value>
-    </param>
-    <param>
-      <key>realtime_scheduling</key>
-      <value></value>
-    </param>
-    <param>
-      <key>run_command</key>
-      <value>{python} -u {filename}</value>
-    </param>
-    <param>
-      <key>run_options</key>
-      <value>run</value>
-    </param>
-    <param>
-      <key>run</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>thread_safe_setters</key>
-      <value></value>
-    </param>
-    <param>
-      <key>title</key>
-      <value>Two channel multi-rtl RX to cfile</value>
-    </param>
-  </block>
-  <block>
-    <key>parameter</key>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(600, 183)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>ch0_id_string</value>
-    </param>
-    <param>
-      <key>label</key>
-      <value>ch0-id-string</value>
-    </param>
-    <param>
-      <key>short_id</key>
-      <value></value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>string</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>"0"</value>
-    </param>
-  </block>
-  <block>
-    <key>parameter</key>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(728, 183)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>ch1_id_string</value>
-    </param>
-    <param>
-      <key>label</key>
-      <value>ch1-id-string</value>
-    </param>
-    <param>
-      <key>short_id</key>
-      <value></value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>string</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>"1"</value>
-    </param>
-  </block>
-  <block>
-    <key>blocks_file_sink</key>
-    <param>
-      <key>append</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>file</key>
-      <value>fname_ch0</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(432, 302)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>file_sink_ch0</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>complex</value>
-    </param>
-    <param>
-      <key>unbuffered</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>vlen</key>
-      <value>1</value>
-    </param>
-  </block>
-  <block>
-    <key>blocks_file_sink</key>
-    <param>
-      <key>append</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>file</key>
-      <value>fname_ch1</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(432, 382)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>file_sink_ch1</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>complex</value>
-    </param>
-    <param>
-      <key>unbuffered</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>vlen</key>
-      <value>1</value>
-    </param>
-  </block>
-  <block>
-    <key>parameter</key>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(600, 271)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>fname_ch0</value>
-    </param>
-    <param>
-      <key>label</key>
-      <value>fname-ch0</value>
-    </param>
-    <param>
-      <key>short_id</key>
-      <value></value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>string</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>ch0.cfile</value>
-    </param>
-  </block>
-  <block>
-    <key>parameter</key>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(728, 271)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>fname_ch1</value>
-    </param>
-    <param>
-      <key>label</key>
-      <value>fname-ch1</value>
-    </param>
-    <param>
-      <key>short_id</key>
-      <value></value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>string</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>ch1.cfile</value>
-    </param>
-  </block>
-  <block>
-    <key>parameter</key>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(600, 7)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>freq_ch0</value>
-    </param>
-    <param>
-      <key>label</key>
-      <value>freq-ch0</value>
-    </param>
-    <param>
-      <key>short_id</key>
-      <value></value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>eng_float</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>939e6</value>
-    </param>
-  </block>
-  <block>
-    <key>parameter</key>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(728, 7)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>freq_ch1</value>
-    </param>
-    <param>
-      <key>label</key>
-      <value>freq_ch1</value>
-    </param>
-    <param>
-      <key>short_id</key>
-      <value></value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>eng_float</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>939e6</value>
-    </param>
-  </block>
-  <block>
-    <key>parameter</key>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(248, 8)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>freq_corr</value>
-    </param>
-    <param>
-      <key>label</key>
-      <value>freq-corr</value>
-    </param>
-    <param>
-      <key>short_id</key>
-      <value>p</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>eng_float</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>0</value>
-    </param>
-  </block>
-  <block>
-    <key>parameter</key>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(600, 95)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>gain_ch0</value>
-    </param>
-    <param>
-      <key>label</key>
-      <value>gain-ch0</value>
-    </param>
-    <param>
-      <key>short_id</key>
-      <value></value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>eng_float</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>30</value>
-    </param>
-  </block>
-  <block>
-    <key>parameter</key>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(728, 95)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>gain_ch1</value>
-    </param>
-    <param>
-      <key>label</key>
-      <value>gain-ch1</value>
-    </param>
-    <param>
-      <key>short_id</key>
-      <value></value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>eng_float</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>30</value>
-    </param>
-  </block>
-  <block>
-    <key>blocks_head</key>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(264, 316)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>head_ch0</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>num_items</key>
-      <value>nsamples</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>complex</value>
-    </param>
-    <param>
-      <key>vlen</key>
-      <value>1</value>
-    </param>
-  </block>
-  <block>
-    <key>blocks_head</key>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(264, 396)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>head_ch1</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>num_items</key>
-      <value>nsamples</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>complex</value>
-    </param>
-    <param>
-      <key>vlen</key>
-      <value>1</value>
-    </param>
-  </block>
-  <block>
-    <key>multi_rtl_source</key>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>freq0</key>
-      <value>freq_ch0</value>
-    </param>
-    <param>
-      <key>gain_mode0</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>id_string0</key>
-      <value>ch0_id_string</value>
-    </param>
-    <param>
-      <key>gain0</key>
-      <value>gain_ch0</value>
-    </param>
-    <param>
-      <key>sync_gain0</key>
-      <value>sync_gain_ch0</value>
-    </param>
-    <param>
-      <key>freq10</key>
-      <value>100e6</value>
-    </param>
-    <param>
-      <key>gain_mode10</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>id_string10</key>
-      <value>"10"</value>
-    </param>
-    <param>
-      <key>gain10</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>sync_gain10</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>freq11</key>
-      <value>100e6</value>
-    </param>
-    <param>
-      <key>gain_mode11</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>id_string11</key>
-      <value>"11"</value>
-    </param>
-    <param>
-      <key>gain11</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>sync_gain11</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>freq12</key>
-      <value>100e6</value>
-    </param>
-    <param>
-      <key>gain_mode12</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>id_string12</key>
-      <value>"12"</value>
-    </param>
-    <param>
-      <key>gain12</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>sync_gain12</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>freq13</key>
-      <value>100e6</value>
-    </param>
-    <param>
-      <key>gain_mode13</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>id_string13</key>
-      <value>"13"</value>
-    </param>
-    <param>
-      <key>gain13</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>sync_gain13</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>freq14</key>
-      <value>100e6</value>
-    </param>
-    <param>
-      <key>gain_mode14</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>id_string14</key>
-      <value>"14"</value>
-    </param>
-    <param>
-      <key>gain14</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>sync_gain14</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>freq15</key>
-      <value>100e6</value>
-    </param>
-    <param>
-      <key>gain_mode15</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>id_string15</key>
-      <value>"15"</value>
-    </param>
-    <param>
-      <key>gain15</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>sync_gain15</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>freq16</key>
-      <value>100e6</value>
-    </param>
-    <param>
-      <key>gain_mode16</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>id_string16</key>
-      <value>"16"</value>
-    </param>
-    <param>
-      <key>gain16</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>sync_gain16</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>freq17</key>
-      <value>100e6</value>
-    </param>
-    <param>
-      <key>gain_mode17</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>id_string17</key>
-      <value>"17"</value>
-    </param>
-    <param>
-      <key>gain17</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>sync_gain17</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>freq18</key>
-      <value>100e6</value>
-    </param>
-    <param>
-      <key>gain_mode18</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>id_string18</key>
-      <value>"18"</value>
-    </param>
-    <param>
-      <key>gain18</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>sync_gain18</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>freq19</key>
-      <value>100e6</value>
-    </param>
-    <param>
-      <key>gain_mode19</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>id_string19</key>
-      <value>"19"</value>
-    </param>
-    <param>
-      <key>gain19</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>sync_gain19</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>freq1</key>
-      <value>freq_ch1</value>
-    </param>
-    <param>
-      <key>gain_mode1</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>id_string1</key>
-      <value>ch1_id_string</value>
-    </param>
-    <param>
-      <key>gain1</key>
-      <value>gain_ch1</value>
-    </param>
-    <param>
-      <key>sync_gain1</key>
-      <value>sync_gain_ch1</value>
-    </param>
-    <param>
-      <key>freq20</key>
-      <value>100e6</value>
-    </param>
-    <param>
-      <key>gain_mode20</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>id_string20</key>
-      <value>"20"</value>
-    </param>
-    <param>
-      <key>gain20</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>sync_gain20</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>freq21</key>
-      <value>100e6</value>
-    </param>
-    <param>
-      <key>gain_mode21</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>id_string21</key>
-      <value>"21"</value>
-    </param>
-    <param>
-      <key>gain21</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>sync_gain21</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>freq22</key>
-      <value>100e6</value>
-    </param>
-    <param>
-      <key>gain_mode22</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>id_string22</key>
-      <value>"22"</value>
-    </param>
-    <param>
-      <key>gain22</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>sync_gain22</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>freq23</key>
-      <value>100e6</value>
-    </param>
-    <param>
-      <key>gain_mode23</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>id_string23</key>
-      <value>"23"</value>
-    </param>
-    <param>
-      <key>gain23</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>sync_gain23</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>freq24</key>
-      <value>100e6</value>
-    </param>
-    <param>
-      <key>gain_mode24</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>id_string24</key>
-      <value>"24"</value>
-    </param>
-    <param>
-      <key>gain24</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>sync_gain24</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>freq25</key>
-      <value>100e6</value>
-    </param>
-    <param>
-      <key>gain_mode25</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>id_string25</key>
-      <value>"25"</value>
-    </param>
-    <param>
-      <key>gain25</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>sync_gain25</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>freq26</key>
-      <value>100e6</value>
-    </param>
-    <param>
-      <key>gain_mode26</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>id_string26</key>
-      <value>"26"</value>
-    </param>
-    <param>
-      <key>gain26</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>sync_gain26</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>freq27</key>
-      <value>100e6</value>
-    </param>
-    <param>
-      <key>gain_mode27</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>id_string27</key>
-      <value>"27"</value>
-    </param>
-    <param>
-      <key>gain27</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>sync_gain27</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>freq28</key>
-      <value>100e6</value>
-    </param>
-    <param>
-      <key>gain_mode28</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>id_string28</key>
-      <value>"28"</value>
-    </param>
-    <param>
-      <key>gain28</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>sync_gain28</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>freq29</key>
-      <value>100e6</value>
-    </param>
-    <param>
-      <key>gain_mode29</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>id_string29</key>
-      <value>"29"</value>
-    </param>
-    <param>
-      <key>gain29</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>sync_gain29</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>freq2</key>
-      <value>100e6</value>
-    </param>
-    <param>
-      <key>gain_mode2</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>id_string2</key>
-      <value>"2"</value>
-    </param>
-    <param>
-      <key>gain2</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>sync_gain2</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>freq30</key>
-      <value>100e6</value>
-    </param>
-    <param>
-      <key>gain_mode30</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>id_string30</key>
-      <value>"30"</value>
-    </param>
-    <param>
-      <key>gain30</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>sync_gain30</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>freq31</key>
-      <value>100e6</value>
-    </param>
-    <param>
-      <key>gain_mode31</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>id_string31</key>
-      <value>"31"</value>
-    </param>
-    <param>
-      <key>gain31</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>sync_gain31</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>freq3</key>
-      <value>100e6</value>
-    </param>
-    <param>
-      <key>gain_mode3</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>id_string3</key>
-      <value>"3"</value>
-    </param>
-    <param>
-      <key>gain3</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>sync_gain3</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>freq4</key>
-      <value>100e6</value>
-    </param>
-    <param>
-      <key>gain_mode4</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>id_string4</key>
-      <value>"4"</value>
-    </param>
-    <param>
-      <key>gain4</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>sync_gain4</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>freq5</key>
-      <value>100e6</value>
-    </param>
-    <param>
-      <key>gain_mode5</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>id_string5</key>
-      <value>"5"</value>
-    </param>
-    <param>
-      <key>gain5</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>sync_gain5</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>freq6</key>
-      <value>100e6</value>
-    </param>
-    <param>
-      <key>gain_mode6</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>id_string6</key>
-      <value>"6"</value>
-    </param>
-    <param>
-      <key>gain6</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>sync_gain6</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>freq7</key>
-      <value>100e6</value>
-    </param>
-    <param>
-      <key>gain_mode7</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>id_string7</key>
-      <value>"7"</value>
-    </param>
-    <param>
-      <key>gain7</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>sync_gain7</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>freq8</key>
-      <value>100e6</value>
-    </param>
-    <param>
-      <key>gain_mode8</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>id_string8</key>
-      <value>"8"</value>
-    </param>
-    <param>
-      <key>gain8</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>sync_gain8</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>freq9</key>
-      <value>100e6</value>
-    </param>
-    <param>
-      <key>gain_mode9</key>
-      <value>False</value>
-    </param>
-    <param>
-      <key>id_string9</key>
-      <value>"9"</value>
-    </param>
-    <param>
-      <key>gain9</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>sync_gain9</key>
-      <value>10</value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>affinity</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>corr</key>
-      <value>freq_corr</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(16, 320)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>multi_rtl_source</value>
-    </param>
-    <param>
-      <key>maxoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>minoutbuf</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>nchan</key>
-      <value>2</value>
-    </param>
-    <param>
-      <key>sample_rate</key>
-      <value>samp_rate</value>
-    </param>
-    <param>
-      <key>sync_freq</key>
-      <value>sync_freq</value>
-    </param>
-  </block>
-  <block>
-    <key>parameter</key>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(352, 8)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>nsamples</value>
-    </param>
-    <param>
-      <key>label</key>
-      <value>nsamples</value>
-    </param>
-    <param>
-      <key>short_id</key>
-      <value>N</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>intx</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>int(1e10)</value>
-    </param>
-  </block>
-  <block>
-    <key>parameter</key>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(8, 128)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>samp_rate</value>
-    </param>
-    <param>
-      <key>label</key>
-      <value>samp-rate</value>
-    </param>
-    <param>
-      <key>short_id</key>
-      <value>r</value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>eng_float</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>1e6</value>
-    </param>
-  </block>
-  <block>
-    <key>parameter</key>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(464, 7)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>sync_freq</value>
-    </param>
-    <param>
-      <key>label</key>
-      <value>sync-freq</value>
-    </param>
-    <param>
-      <key>short_id</key>
-      <value></value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>eng_float</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>939e6</value>
-    </param>
-  </block>
-  <block>
-    <key>parameter</key>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(464, 95)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>sync_gain_ch0</value>
-    </param>
-    <param>
-      <key>label</key>
-      <value>sync-gain-ch0</value>
-    </param>
-    <param>
-      <key>short_id</key>
-      <value></value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>eng_float</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>30</value>
-    </param>
-  </block>
-  <block>
-    <key>parameter</key>
-    <param>
-      <key>alias</key>
-      <value></value>
-    </param>
-    <param>
-      <key>comment</key>
-      <value></value>
-    </param>
-    <param>
-      <key>_enabled</key>
-      <value>True</value>
-    </param>
-    <param>
-      <key>_coordinate</key>
-      <value>(464, 183)</value>
-    </param>
-    <param>
-      <key>_rotation</key>
-      <value>0</value>
-    </param>
-    <param>
-      <key>id</key>
-      <value>sync_gain_ch1</value>
-    </param>
-    <param>
-      <key>label</key>
-      <value>sync-gain-ch1</value>
-    </param>
-    <param>
-      <key>short_id</key>
-      <value></value>
-    </param>
-    <param>
-      <key>type</key>
-      <value>eng_float</value>
-    </param>
-    <param>
-      <key>value</key>
-      <value>30</value>
-    </param>
-  </block>
-  <connection>
-    <source_block_id>head_ch0</source_block_id>
-    <sink_block_id>file_sink_ch0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>head_ch1</source_block_id>
-    <sink_block_id>file_sink_ch1</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>multi_rtl_source</source_block_id>
-    <sink_block_id>head_ch0</sink_block_id>
-    <source_key>0</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-  <connection>
-    <source_block_id>multi_rtl_source</source_block_id>
-    <sink_block_id>head_ch1</sink_block_id>
-    <source_key>1</source_key>
-    <sink_key>0</sink_key>
-  </connection>
-</flow_graph>
+options:
+  parameters:
+    author: Antoni Przybylik
+    category: '[GRC Hier Blocks]'
+    cmake_opt: ''
+    comment: ''
+    copyright: ''
+    description: Sample application for recording to binary files the samples from
+      inputs of two channel multi-rtl receiver
+    gen_cmake: 'On'
+    gen_linking: dynamic
+    generate_options: no_gui
+    hier_block_src_path: '.:'
+    id: mutlirtl_rx_to_cfile_2chan
+    max_nouts: '0'
+    output_language: python
+    placement: (0,0)
+    qt_qss_theme: ''
+    realtime_scheduling: ''
+    run: 'True'
+    run_command: '{python} -u {filename}'
+    run_options: prompt
+    sizing_mode: fixed
+    thread_safe_setters: ''
+    title: mutlirtl_rx_to_cfile_2chan
+    window_size: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 8]
+    rotation: 0
+    state: enabled
+
+blocks:
+- name: samp_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: '1000000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [184, 12]
+    rotation: 0
+    state: enabled
+- name: blocks_file_sink_0
+  id: blocks_file_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    append: 'False'
+    comment: ''
+    file: fname_ch0
+    type: complex
+    unbuffered: 'False'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [896, 159]
+    rotation: 0
+    state: true
+- name: blocks_file_sink_1
+  id: blocks_file_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    append: 'False'
+    comment: ''
+    file: fname_ch1
+    type: complex
+    unbuffered: 'False'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [894, 257]
+    rotation: 0
+    state: true
+- name: blocks_head_0
+  id: blocks_head
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_items: '10000000000'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [672, 175]
+    rotation: 0
+    state: true
+- name: blocks_head_0_0
+  id: blocks_head
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_items: '10000000000'
+    type: complex
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [672, 273]
+    rotation: 0
+    state: true
+- name: multi_rtl_source_0
+  id: multi_rtl_source
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    corr: '0'
+    freq0: '939000000'
+    freq1: '939000000'
+    freq10: 100e6
+    freq11: 100e6
+    freq12: 100e6
+    freq13: 100e6
+    freq14: 100e6
+    freq15: 100e6
+    freq16: 100e6
+    freq17: 100e6
+    freq18: 100e6
+    freq19: 100e6
+    freq2: 100e6
+    freq20: 100e6
+    freq21: 100e6
+    freq22: 100e6
+    freq23: 100e6
+    freq24: 100e6
+    freq25: 100e6
+    freq26: 100e6
+    freq27: 100e6
+    freq28: 100e6
+    freq29: 100e6
+    freq3: 100e6
+    freq30: 100e6
+    freq31: 100e6
+    freq4: 100e6
+    freq5: 100e6
+    freq6: 100e6
+    freq7: 100e6
+    freq8: 100e6
+    freq9: 100e6
+    gain0: '10'
+    gain1: '10'
+    gain10: '10'
+    gain11: '10'
+    gain12: '10'
+    gain13: '10'
+    gain14: '10'
+    gain15: '10'
+    gain16: '10'
+    gain17: '10'
+    gain18: '10'
+    gain19: '10'
+    gain2: '10'
+    gain20: '10'
+    gain21: '10'
+    gain22: '10'
+    gain23: '10'
+    gain24: '10'
+    gain25: '10'
+    gain26: '10'
+    gain27: '10'
+    gain28: '10'
+    gain29: '10'
+    gain3: '10'
+    gain30: '10'
+    gain31: '10'
+    gain4: '10'
+    gain5: '10'
+    gain6: '10'
+    gain7: '10'
+    gain8: '10'
+    gain9: '10'
+    gain_mode0: 'False'
+    gain_mode1: 'False'
+    gain_mode10: 'False'
+    gain_mode11: 'False'
+    gain_mode12: 'False'
+    gain_mode13: 'False'
+    gain_mode14: 'False'
+    gain_mode15: 'False'
+    gain_mode16: 'False'
+    gain_mode17: 'False'
+    gain_mode18: 'False'
+    gain_mode19: 'False'
+    gain_mode2: 'False'
+    gain_mode20: 'False'
+    gain_mode21: 'False'
+    gain_mode22: 'False'
+    gain_mode23: 'False'
+    gain_mode24: 'False'
+    gain_mode25: 'False'
+    gain_mode26: 'False'
+    gain_mode27: 'False'
+    gain_mode28: 'False'
+    gain_mode29: 'False'
+    gain_mode3: 'False'
+    gain_mode30: 'False'
+    gain_mode31: 'False'
+    gain_mode4: 'False'
+    gain_mode5: 'False'
+    gain_mode6: 'False'
+    gain_mode7: 'False'
+    gain_mode8: 'False'
+    gain_mode9: 'False'
+    id_string0: '0'
+    id_string1: '1'
+    id_string10: '10'
+    id_string11: '11'
+    id_string12: '12'
+    id_string13: '13'
+    id_string14: '14'
+    id_string15: '15'
+    id_string16: '16'
+    id_string17: '17'
+    id_string18: '18'
+    id_string19: '19'
+    id_string2: '2'
+    id_string20: '20'
+    id_string21: '21'
+    id_string22: '22'
+    id_string23: '23'
+    id_string24: '24'
+    id_string25: '25'
+    id_string26: '26'
+    id_string27: '27'
+    id_string28: '28'
+    id_string29: '29'
+    id_string3: '3'
+    id_string30: '30'
+    id_string31: '31'
+    id_string4: '4'
+    id_string5: '5'
+    id_string6: '6'
+    id_string7: '7'
+    id_string8: '8'
+    id_string9: '9'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    nchan: '2'
+    sample_rate: samp_rate
+    sync_freq: '939400000'
+    sync_gain0: '10'
+    sync_gain1: '10'
+    sync_gain10: '10'
+    sync_gain11: '10'
+    sync_gain12: '10'
+    sync_gain13: '10'
+    sync_gain14: '10'
+    sync_gain15: '10'
+    sync_gain16: '10'
+    sync_gain17: '10'
+    sync_gain18: '10'
+    sync_gain19: '10'
+    sync_gain2: '10'
+    sync_gain20: '10'
+    sync_gain21: '10'
+    sync_gain22: '10'
+    sync_gain23: '10'
+    sync_gain24: '10'
+    sync_gain25: '10'
+    sync_gain26: '10'
+    sync_gain27: '10'
+    sync_gain28: '10'
+    sync_gain29: '10'
+    sync_gain3: '10'
+    sync_gain30: '10'
+    sync_gain31: '10'
+    sync_gain4: '10'
+    sync_gain5: '10'
+    sync_gain6: '10'
+    sync_gain7: '10'
+    sync_gain8: '10'
+    sync_gain9: '10'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [379, 196]
+    rotation: 0
+    state: true
+
+connections:
+- [blocks_head_0, '0', blocks_file_sink_0, '0']
+- [blocks_head_0_0, '0', blocks_file_sink_1, '0']
+- [multi_rtl_source_0, '0', blocks_head_0, '0']
+- [multi_rtl_source_0, '1', blocks_head_0_0, '0']
+
+metadata:
+  file_format: 1
