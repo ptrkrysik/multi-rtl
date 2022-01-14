@@ -58,7 +58,7 @@ set(Boost_ADDITIONAL_VERSIONS
     "1.65.0" "1.65" "1.66.0" "1.66" "1.67.0" "1.67" "1.68.0" "1.68" "1.69.0" "1.69"
     "1.70.0" "1.70" "1.71.0" "1.71" "1.72.0" "1.72"
 )
-find_package(Boost "1.35" COMPONENTS filesystem system)
+find_package(Boost "1.35" COMPONENTS filesystem system thread program_options regex)
 
 if(NOT Boost_FOUND)
     message(FATAL_ERROR "Boost required to compile multi_rtl")
